@@ -1,6 +1,39 @@
 <?php
-
-class Authentification 
+class Authentification {
+ 
+  /**
+   * @var Singleton
+   * @access private
+   * @static
+   */
+   private static $_instance = null;
+ 
+   /**
+    * Constructeur de la classe
+    *
+    * @param void
+    * @return void
+    */
+   private function __construct() {  
+   }
+ 
+   /**
+    * Méthode qui crée l'unique instance de la classe
+    * si elle n'existe pas encore puis la retourne.
+    *
+    * @param void
+    * @return Singleton
+    */
+   public static function getInstance() {
+ 
+     if(is_null(self::$_instance)) {
+       self::$_instance = new Singleton();  
+     }
+ 
+     return self::$_instance;
+   }
+}
+/*class Authentification 
 {
     private $session;
     
@@ -9,7 +42,11 @@ class Authentification
     }
     
     function isAuth(){
-        
+        if(isset($session)){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     function checkUser($login,$passwd){
@@ -19,7 +56,7 @@ class Authentification
     function disconnect(){
         
     }
-}
+}*/
 
 /*class Auth{
 
