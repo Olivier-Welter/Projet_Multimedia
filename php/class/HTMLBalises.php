@@ -6,6 +6,12 @@ class HTMLBalises
     private $htmlBaliseType;
     private $htmlBaliseAttrib=[];
 
+    /* constructeur
+    paramètres :
+    $htmlType : string, type de balise
+    $htmlAttrib : tableau associatif des attributs de la balise [attribut => valeur] (facultatif)
+    $htmlMsg : string, contenu de la balise, affiché seulement si la balise n'est pas auto-fermante (facultatif)
+    */
     public function __construct($htmlType, $htmlAttrib = [], $htmlMsg='')
     {
         $this->htmlBaliseType = $htmlType;
@@ -20,14 +26,24 @@ class HTMLBalises
         {
             $toString = $toString.' '.$key.'="'.$val.'"';
         }
-        //$toString = $toString.'>'."\n";
 
-        //if($this->htmlBaliseType === 'input')
         switch($this->htmlBaliseType)
         {
-            case ('input'):
+            case ('area'):
+            case ('base'):
             case ('br'):
+            case ('col'):
+            case ('embed'):
+            case ('hr'):
             case ('img'):
+            case ('input'):
+            case ('keygen'):
+            case ('link'):
+            case ('meta'):
+            case ('param'):
+            case ('source'):
+            case ('track'):
+            case ('wbr'):
                 $toString = $toString.'/>'."\n";
                 break;
             default:
