@@ -3,6 +3,7 @@
 class ConnectDB
 {
     //*******************************Variables membres*****************************
+    //type de 
     private $dbType;
     private $dbUser;
     private $dbPassword;
@@ -11,13 +12,19 @@ class ConnectDB
     private $dbConnection = NULL;
 
     //*******************************Constructeur*****************************
-    public function __construct($dbType, $dbName, $dbURL, $dbUser, $dbPassword)
+    public function __construct($valDBType, $valDBName, $valDBURL, $valDBUser, $valDBPassword)
     {
-        $this->__set($this->dbType,$dbType);
-        $this->__set($this->dbUser,$dbUser);
-        $this->__set($this->dbPassword,$dbPassword);
-        $this->__set($this->dbURL,$dbURL);
-        $this->__set($this->dbName,$dbName);
+        echo $valDBType;
+        echo $valDBName;
+        echo $valDBURL;
+        echo $valDBUser;
+        echo $valDBPassword;
+        $this->__set($this->dbType,$valDBType);
+        $this->__set($this->dbUser,$valDBUser);
+        $this->__set($this->dbPassword,$valDBPassword);
+        $this->__set($this->dbURL,$valDBURL);
+        $this->__set($this->dbName,$valDBName);
+        echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword;
         $this->dbConnection = new PDO("$this->dbType:host=$this->dbURL;dbname=$this->dbName", $this->dbUser, $this->dbPassword);
     }
 
@@ -75,7 +82,7 @@ class ConnectDB
     /*Fonction dbConnec()
     *Argument : Aucun
     *Description: Créer une connexion à la base de données selon les informations de l'objet ConnectDB.
-    *
+    *Cette connexion est affectée à la variable membre $dbConnection.
     *
     */
     private function dbConnect()
@@ -97,11 +104,19 @@ class ConnectDB
                 'ligne'=>$pdoe->getLine()]);
         }
     }
-
+    
+    /*Fonction dbQuery()
+    *Argument:
+    *$query: chaine de caractère représentant la requete à exécuter sur la base de données.
+    *
+    *Description:
+    *Retourne le résultat de la requete sous la forme d'un tableau de tableaux associatif'
+    */
     public function dbQuery($query)
     {
         try
         {
+            //prépare la requête à être exécutée.
             $res = $this->dbConnection->prepare($query);
             $res->execute();
 
