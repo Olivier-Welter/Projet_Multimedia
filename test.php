@@ -14,3 +14,25 @@ $dbc = new ConnectDB(
 //         'localhost',
 //         'root',
 //         '');
+
+$resultSet = $dbc->dbQuery('SELECT * FROM users');
+if(isset($resultSet))
+{
+    echo '<table>';
+    foreach($resultSet as $keyLine => $valLine)
+    {
+        echo '<tr>';
+        foreach($valLine as $keyCol => $val)
+        {
+            echo '<td>';
+            echo $val;
+            echo '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+else
+{
+    echo '<p>Aucun résultat</p>';
+}
