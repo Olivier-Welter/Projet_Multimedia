@@ -4,7 +4,8 @@ $s = Session::getInstance('MA_SESSION');
 $s->setMaxHops(10); 
 $s->setMaxAge(50); 
 if ($s->start()) { 
-    $newval = openssl_random_pseudo_bytes(5); 
+    $grainDeSel = rand();
+    $newval = md5(rand().$grainDeSel); 
     // la variable aléatoire qui sera stockée en session 
     printf("<h2>Il reste <em>%s</em> accès.</h2>\n", $s->getRemainingHops());
     printf("<h2>Il reste <em>%s</em> secondes.</h2>\n", $s->getRemainingTime()); 
