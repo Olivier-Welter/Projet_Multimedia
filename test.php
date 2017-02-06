@@ -33,12 +33,12 @@ if(isset($resultSet))
             echo '</td>';
         }
         
-        // foreach($valLine as $keyCol => $val)
-        // {
-        //     echo '<td>';
-        //     echo $val;
-        //     echo '</td>';
-        // }
+        foreach($valLine as $keyCol => $val)
+        {
+            echo '<td>';
+            echo $val;
+            echo '</td>';
+        }
         echo '</tr>';
     }
     echo '</table>';
