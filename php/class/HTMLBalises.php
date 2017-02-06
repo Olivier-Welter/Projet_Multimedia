@@ -6,7 +6,7 @@ class HTMLBalises
     private $htmlBaliseType;
     private $htmlBaliseAttrib=[];
 
-    public function __construct($htmlType, $htmlAttrib, $htmlMsg='')
+    public function __construct($htmlType, $htmlAttrib = [], $htmlMsg='')
     {
         $this->htmlBaliseType = $htmlType;
         $this->htmlBaliseAttrib = $htmlAttrib;
@@ -15,23 +15,25 @@ class HTMLBalises
 
     public function __toString()
     {
-        $toString = '<'.$this->htmlBaliseType.' ';
+        $toString = '<'.$this->htmlBaliseType;
         foreach($this->htmlBaliseAttrib as $key => $val)
         {
-            $toString = $toString.$key.'="'.$val.'" ';
+            $toString = $toString.' '.$key.'="'.$val.'"';
         }
-        $toString = $toString.'>'."\n";
+        //$toString = $toString.'>'."\n";
 
-        if($this->htmlBaliseType === 'input')
+        //if($this->htmlBaliseType === 'input')
         switch($this->htmlBaliseType)
         {
             case ('input'):
-                break;
             case ('br'):
-                $toString = $toString.'/>';
+            case ('img'):
+                $toString = $toString.'/>'."\n";
                 break;
             default:
-                $toString = $toString.'</'.$this->htmlBaliseType.'>';
+                $toString = $toString.'>'."\n";
+                $toString = $toString.' '.$this->htmlBaliseMsg;
+                $toString = $toString.'</'.$this->htmlBaliseType.'>'."\n";
         }
         return $toString;
     }
