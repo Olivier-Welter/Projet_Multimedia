@@ -8,3 +8,9 @@ $dbc = new ConnectDB(
         'maemoon_com',
         'TotoIsNotTiti');
 //$dbc->dbQuery('SELECT * FROM users');
+// $dbc = new ConnectDB(
+//         'mysql',
+//         'mediabdd',
+//         'localhost',
+//         'root',
+//         '');

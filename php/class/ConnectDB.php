@@ -14,16 +14,11 @@ class ConnectDB
     //*******************************Constructeur*****************************
     public function __construct($valDBType, $valDBName, $valDBURL, $valDBUser, $valDBPassword)
     {
-        echo $valDBType;
-        echo $valDBName;
-        echo $valDBURL;
-        echo $valDBUser;
-        echo $valDBPassword;
-        $this->__set($this->dbType,$valDBType);
-        $this->__set($this->dbUser,$valDBUser);
-        $this->__set($this->dbPassword,$valDBPassword);
-        $this->__set($this->dbURL,$valDBURL);
-        $this->__set($this->dbName,$valDBName);
+        $this->__set('dbType',$valDBType);
+        $this->__set('dbUser',$valDBUser);
+        $this->__set('dbPassword',$valDBPassword);
+        $this->__set('dbURL',$valDBURL);
+        $this->__set('dbName',$valDBName);
         echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword;
         $this->dbConnection = new PDO("$this->dbType:host=$this->dbURL;dbname=$this->dbName", $this->dbUser, $this->dbPassword);
     }
