@@ -117,7 +117,7 @@ class ConnectDB
 
             if($res != false)
             {
-                return $res->fetchAll(PDO::FETCH_ASSOC);
+                return $res->fetchAll(PDO::FETCH_BOTH);
             }
             return NULL;
         }
