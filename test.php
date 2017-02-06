@@ -26,13 +26,6 @@ if(isset($resultSet))
     foreach($resultSet as $keyLine => $valLine)
     {
         echo '<tr>';
-        for($i=0;$i<count($valLine)-3;$i++)
-        {
-            echo '<td>';
-            echo $valLine[$i];
-            echo '</td>';
-        }
-        
         foreach($valLine as $keyCol => $val)
         {
             echo '<td>';
