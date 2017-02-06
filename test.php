@@ -1,19 +1,19 @@
 <?php
 require_once('./php/autoload.php');
 
-// $dbc = new ConnectDB(
-//         'mysql',
-//         'maemoon_com',
-//         'maemoon.com.mysql',
-//         'maemoon_com',
-//         'TotoIsNotTiti');
-//$dbc->dbQuery('SELECT * FROM users');
 $dbc = new ConnectDB(
         'mysql',
-        'mediabdd',
-        'localhost',
-        'root',
-        '');
+        'maemoon_com',
+        'maemoon.com.mysql',
+        'maemoon_com',
+        'TotoIsNotTiti');
+//$dbc->dbQuery('SELECT * FROM users');
+// $dbc = new ConnectDB(
+//         'mysql',
+//         'mediabdd',
+//         'localhost',
+//         'root',
+//         '');
 
 $resultSet = $dbc->dbQuery('SELECT * FROM users');
 echo '<pre>';
