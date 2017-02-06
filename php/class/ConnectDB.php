@@ -74,7 +74,7 @@ class ConnectDB
         }
     }
 
-    /*Fonction dbConnec()
+    /*Fonction dbConnect()
     *Argument : Aucun
     *Description: Créer une connexion à la base de données selon les informations de l'objet ConnectDB.
     *Cette connexion est affectée à la variable membre $dbConnection.
@@ -120,6 +120,18 @@ class ConnectDB
                 return $res->fetchAll(PDO::FETCH_ASSOC);
             }
             return NULL;
+        }
+        catch(PDOException $pdoe)
+        {
+            throw new CustomException($pdoe->getMessage(),$pdoe->getCode(), $pdoe->getFile(),$pdoe->getLine());
+        }
+    }
+
+    public function dbInsert($query)
+    {
+        try
+        {
+            return $res;
         }
         catch(PDOException $pdoe)
         {
