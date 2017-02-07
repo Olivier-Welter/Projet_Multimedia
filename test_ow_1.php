@@ -15,7 +15,7 @@ if ($s->start()) {
     // stockage de la variable "test" en session 
 } 
 else { 
-    print("<p>Session terminée.</p>\n"); 
+    echo("<p>Session terminée.</p>\n"); 
     }
 //==================================================	
 	$dbc = new ConnectDB(
