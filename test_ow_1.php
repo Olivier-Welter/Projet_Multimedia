@@ -17,3 +17,41 @@ if ($s->start()) {
 else { 
     print("<p>Session terminée.</p>\n"); 
     }
+//==================================================	
+	$dbc = new ConnectDB(
+        'mysql',
+        'maemoon_com',
+        'localhost',
+        'root',
+        '');
+		
+//==================================================		
+$form = new FormAuth();
+echo $form;
+//==================================================	
+$resultSet = $dbc->dbQuery('SELECT * FROM users where maemoon_com.users.login=');
+echo '<pre>';
+print_r($resultSet);
+echo '</pre>';
+
+if(isset($resultSet))
+{
+    echo '<table>';
+    foreach($resultSet as $keyLine => $valLine)
+    {
+        echo '<tr>';
+        foreach($valLine as $keyCol => $val)
+        {
+            echo '<td>';
+            echo $val;
+            echo '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+else
+{
+    echo '<p>Aucun résultat</p>';
+}
+//==================================================	
