@@ -19,7 +19,7 @@ class ConnectDB
         $this->__set('dbPassword',$valDBPassword);
         $this->__set('dbURL',$valDBURL);
         $this->__set('dbName',$valDBName);
-        echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword;
+       // echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword;
         $this->dbConnection = new PDO("$this->dbType:host=$this->dbURL;dbname=$this->dbName", $this->dbUser, $this->dbPassword);
     }
 

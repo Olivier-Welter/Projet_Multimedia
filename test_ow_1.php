@@ -37,16 +37,6 @@ echo $form;
 
 
 $resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\'');
-echo '<pre>';
-print_r($s);
-print_r($resultSet);
-echo '</pre>';
+
 var_dump($_SESSION);
 
-
-
-else
-{
-    echo '<p>Aucun résultat</p>';
-}
-//==================================================	

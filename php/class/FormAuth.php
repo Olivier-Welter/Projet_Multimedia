@@ -12,7 +12,7 @@ class FormAuth extends BaseForm {
            
             $this->champsAttr[0]['value'] = $_POST['login'];
             $this->champsAttr[1]['value'] = $_POST['passwd'];
-		 print_r($_POST);
+		 
          
         }
     }
