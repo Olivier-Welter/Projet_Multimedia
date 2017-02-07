@@ -5,6 +5,8 @@ $s->setMaxHops(1000);
 $s->setMaxAge(10000); 
 $s->setStatus('non_auth');
 $s->setLogin=$_POST['login'];
+
+
 if ($s->start()) { 
     $grainDeSel = rand();
     $newval = md5(rand().$grainDeSel); 
