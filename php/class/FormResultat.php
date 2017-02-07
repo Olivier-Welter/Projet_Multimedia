@@ -27,26 +27,19 @@
 
 //}
 
+<?php
 
-$mysqli=new PDO("mysql:host=localhost;dbmane=maemoon_com", "root", "");
+$dbh=new PDO("mysql:host=localhost;dbname=maemoon_com", "root", "");
 /* Vérification de la connexion */
-if (mysqli_connect_errno()) {
-    printf("Échec de la connexion : %s\n", $mysqli->connect_error);
-    exit();
+
+$res = $dbh->query("SELECT * FROM datas");
+if ($res != false){ 
+while($row = $res->fetch() ){
+    echo $row['auteur_id'].' '.$row['date']."<br/>";
 }
-
-$query = "SELECT date,description,login FROM users,datas WHERE auteur_id.datas = users_id.users WHERE date DESC";
-
-if ($result = $mysqli->query($query)) {
-
-    /* Récupère un tableau associatif */
-    while ($row = $result->fetch_assoc()) {
-        echo $row["description"]." ".$row["login"]." ".$row["date"];
-    }
-
-    /* Libération des résultats */
-    $result->free();
+} else{
+    echo "c'est faux";
 }
 
 /* Fermeture de la connexion */
-$mysqli= null;
+$dbh= null;
