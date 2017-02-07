@@ -36,7 +36,7 @@ $s->set('status',1);
 }
 else{
 $s->set('login','');
-$s->set('status',1);	
+$s->set('status',0);	
 }
 
 print_r($resultSet);
