@@ -6,13 +6,14 @@ class FormAuth extends BaseForm {
         $this->addElem('input', ['name' => "login", 'type' => 'text', 'placeholder'=>'login'], 'login : ');
         $this->addElem('input', ['name' => "passwd", 'type' => 'text', 'placeholder'=>'passwd'], 'passwd : ');
 
-        $this->addElem('input', ['name' => "search", 'type' => 'submit', 'value'=>'Authentification']);
+        $this->addElem('input', ['name' => "auth", 'type' => 'submit', 'value'=>'Authentification']);
 
         if(isset($_POST['auth'])){
-            //print_r($_POST);
+           
             $this->champsAttr[0]['value'] = $_POST['login'];
             $this->champsAttr[1]['value'] = $_POST['passwd'];
-          
+		 print_r($_POST);
+         
         }
     }
 
