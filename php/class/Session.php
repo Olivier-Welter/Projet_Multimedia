@@ -7,16 +7,16 @@ class Session {
     private $maxAge = -1;
     // durée de vie maximale d'une session-1 => pas de limite 
 
-    private function __construct($nom) { 
-        $this->nom = $nom; 
+    private function __construct() { 
+        //$this->nom = $nom; 
     } 
-    public static function getInstance($nom) {
+    public static function getInstance() {
         if (!self::$instance) 
-            self::$instance = new self($nom); 
+            self::$instance = new self(); 
             return self::$instance; 
     } 
     public function start() { 
-        session_name($this->nom); 
+  
         session_start(); 
         if (isset($_SESSION['time'])) { 
             // dans ce cas la session est déjà active, donc on vérifie si elle doit se poursuivre 
