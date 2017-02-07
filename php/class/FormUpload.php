@@ -34,9 +34,9 @@ class FormUpload extends BaseForm {
                 }
                 $new_name = htmlspecialchars ($file['basename']);
                 $new_location = $chemin.'/'.$new_name;
-                echo $new_location."<br>\n";
+                //echo $new_location."<br>\n";
                 if (move_uploaded_file(htmlspecialchars ($_FILES['fic']['tmp_name']),$new_location)){
-                    echo 'transfert effectué';
+                    //echo 'transfert effectué';
                     try{
                         $dbc = new ConnectDB(
                             'mysql',
@@ -56,7 +56,7 @@ class FormUpload extends BaseForm {
                         $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr', 1, '".date("Y-m-d H:i:s")."')";
                         //echo $query;
                         if($res = $dbc->dbCRUD($query)){
-                            echo "Fichier ajouté à la base de données<br>\n";
+                            echo "<p>Le fichier $new_name a bien été envoyé</p>\n";
                         }
                     }catch (Exception $e){
                         echo "Erreur lors de l'envoi en base de données : $e->getMessage()\n";
