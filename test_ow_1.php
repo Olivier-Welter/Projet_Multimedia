@@ -1,6 +1,6 @@
 <?php 
 require_once('./php/autoload.php'); 
-$s = Session::getInstance('session'); 
+$s = Session::getInstance(); 
 $s->setMaxAge(10000); 
 
 if ($s->start()) { 
