@@ -3,10 +3,10 @@
 require_once('php/autoload.php');
 //===================SESSION==========================
 $s = Session::getInstance('session_non_auth'); 
-$s->setMaxHops(1000); 
+
 $s->setMaxAge(10000); 
 if ($s->start()) { 
-
+ echo "session_id : ".session_id().'<br>';
 
 } 
 else { 

@@ -37,6 +37,6 @@ echo $form;
 
 
 $resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\'');
-
+print_r($resultSet);
 var_dump($_SESSION);
 
