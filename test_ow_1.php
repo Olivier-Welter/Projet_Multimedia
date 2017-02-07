@@ -25,6 +25,14 @@ else {
         'root',
         '');
 		
+		//$dbc->dbQuery('SELECT * FROM users');
+// $dbc = new ConnectDB(
+//         'mysql',
+//         'mediabdd',
+//         'localhost',
+//         'root',
+//         '');
+		
 //==================================================		
 $form = new FormAuth();
 echo $form;
