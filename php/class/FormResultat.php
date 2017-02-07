@@ -24,15 +24,20 @@
         return  $this->auteur." ".$this->descr;
     }*/
     
-    $mysql = new PDO("mysql:host=localhost", "maemoon_com", "root", "");
-    if (mysqli_connect_errno()) {
-    printf("Échec de la connexion : %s\n", $mysql->connect_error);
+
+//}
+
+
+$mysqli=new PDO("mysql:host=localhost;dbmane=maemoon_com", "root", "");
+/* Vérification de la connexion */
+if (mysqli_connect_errno()) {
+    printf("Échec de la connexion : %s\n", $mysqli->connect_error);
     exit();
 }
 
-    $query = 'SELECT date,description,login FROM users,datas WHERE auteur_id.datas = users_id.users WHERE date DESC';
-    
-    if ($result = $mysql->query($query)) {
+$query = "SELECT date,description,login FROM users,datas WHERE auteur_id.datas = users_id.users WHERE date DESC";
+
+if ($result = $mysqli->query($query)) {
 
     /* Récupère un tableau associatif */
     while ($row = $result->fetch_assoc()) {
@@ -44,10 +49,7 @@
 }
 
 /* Fermeture de la connexion */
-$mysql->close();
-//}
-
-
+$mysqli= null;
 
 //Michel : un peu dur  tres vite , penser à abandonner
 //Bastien : il se sent tres bien
