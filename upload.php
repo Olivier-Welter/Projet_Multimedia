@@ -1,19 +1,18 @@
-<?php 
-require_once('./php/autoload.php'); 
-$s = Session::getInstance('session'); 
+<!DOCTYPE html>
+<?php
+require_once('php/autoload.php');
+//===================SESSION==========================
+$s = Session::getInstance('session_non_auth'); 
 
 $s->setMaxAge(10000); 
-
-
-
 if ($s->start()) { 
-
-
  echo "session_id : ".session_id().'<br>';
+
 } 
 else { 
-    echo("<p>Session terminée.</p>\n"); 
+    print("<p>Session terminée.</p>\n"); 
     }
+
 //==================================================	
 	$dbc = new ConnectDB(
         'mysql',
@@ -30,19 +29,10 @@ else {
 //         'root',
 //         '');
 		
-//==================================================		
-$form = new FormAuth();
-echo $form;
 //==================================================	
+	
+$form = new FormRecherche();
+echo $form;
 
-
-
-
-$resultSet = $dbc->dbQuery();
-
-echo printf("SELECT * FROM users where login=%s && passwd=%s","$_POST['login']","$_POST['passwd']");
-
-print_r($resultSet);
-
-var_dump($_SESSION);
-
+$form = new FormUpload();
+echo $form;
