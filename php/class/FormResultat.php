@@ -50,6 +50,3 @@ if ($result = $mysqli->query($query)) {
 
 /* Fermeture de la connexion */
 $mysqli= null;
-
-//Michel : un peu dur  tres vite , penser à abandonner
-//Bastien : il se sent tres bien
