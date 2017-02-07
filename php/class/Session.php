@@ -33,7 +33,8 @@ class Session {
 			
             $_SESSION['remainHops'] = $this->maxHops; 
             $_SESSION['time'] = time(); 
-            $_SESSION['vars'] = []; 
+            $_SESSION['vars'] = ['status' => 0, 'login'=>""]; 
+			
             // le tableau des variables de session return true; 
         } 
     } 
