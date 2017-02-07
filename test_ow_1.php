@@ -44,7 +44,7 @@ echo '<pre>';
 print_r($resultSet);
 echo '</pre>';
 
-if(isset($resultSet))
+if(!empty($resultSet))
 {
     echo '<table>';
     foreach($resultSet as $keyLine => $valLine)
