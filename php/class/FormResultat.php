@@ -1,6 +1,6 @@
 <?php 
-
-class FormResultat extends BaseForm{
+include("ConnectDB.php");
+class FormResultat extends ConnectDB{
     
     private $auteur;
     private $descr;
@@ -13,26 +13,44 @@ class FormResultat extends BaseForm{
     de la plus récente à la moins récente avec la vignette, 
     la description et l'élément recherché 
     **/
+    function __construct ($auteur,$descr,$type[]){
+        $this->auteur=$auteur;
+        $this->descr=$descr;
+        $this->type=$type[];
+        
+    }
     
-    $mysql = new PDO("mysql:host=localhost", "maemon_com", "root", "");
-    if (mysqli_connect_errno()) {
-    printf("Échec de la connexion : %s\n", $mysql->connect_error);
-    exit();
+    
+    function rechercheResult(){
+        $query = 'SELECT date,description,login FROM users,datas WHERE auteur_id.datas = users_id.users WHERE date DESC';
+    }
+    function afficherResult(){
+         if ($result = $mysqli->query($query)) {
+
+    //Récupère un tableau associatif 
+    while ($row = $result->fetch_assoc()) {
+        echo $row["description"]." ".$row["login"]." ".$row["date"];
+    }
+
+    //Libération des résultats 
+    $result->free();
+    }
+    
 }
 
-    $query = 'SELECT date,description,nom FROM users,datas WHERE auteur_id.datas = users_id.users WHERE date DESC';
+   /* 
     
     if ($result = $mysqli->query($query)) {
 
-    /* Récupère un tableau associatif */
+    /* Récupère un tableau associatif 
     while ($row = $result->fetch_assoc()) {
-        echo $row["description"]." ".$row["nom"]." ".$row["date"];
+        echo $row["description"]." ".$row["login"]." ".$row["date"];
     }
 
-    /* Libération des résultats */
+    //Libération des résultats 
     $result->free();
 }
 
-/* Fermeture de la connexion */
-$mysql->close();
+//Fermeture de la connexion 
+$mysql->close();*/
 }
