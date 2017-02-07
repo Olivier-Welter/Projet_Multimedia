@@ -23,3 +23,6 @@ else {
 	
 $form = new FormRecherche();
 echo $form;
+
+$form = new FormUpload();
+echo $form;
