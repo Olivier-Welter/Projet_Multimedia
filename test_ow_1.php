@@ -37,6 +37,7 @@ else {
 $form = new FormAuth();
 echo $form;
 //==================================================	
+echo $_POST['login'];
 
 $resultSet = $dbc->dbQuery('SELECT * FROM users where login='.$_POST['login']);
 echo '<pre>';
