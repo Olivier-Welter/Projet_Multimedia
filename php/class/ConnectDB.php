@@ -19,7 +19,7 @@ class ConnectDB
         $this->__set('dbPassword',$valDBPassword);
         $this->__set('dbURL',$valDBURL);
         $this->__set('dbName',$valDBName);
-        echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword.'<br>';
+        echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword;
         $this->dbConnection = new PDO("$this->dbType:host=$this->dbURL;dbname=$this->dbName", $this->dbUser, $this->dbPassword);
     }
 
@@ -117,6 +117,7 @@ class ConnectDB
 
             if($res != false)
             {
+                //si la requete produit des résultat, ils sont retournés sinon la méthode retourne NULL
                 return $res->fetchAll(PDO::FETCH_ASSOC);
             }
             return NULL;
@@ -127,15 +128,25 @@ class ConnectDB
         }
     }
 
-    public function dbInsert($query)
+
+    /*Fonction dbCRUD()
+    *Argument:
+    *$query: chaine de caractère représentant la requete à exécuter sur la base de données.
+    *
+    *Description:
+    *Retourne le résultat de la fonction exec() cette méhode permet de gérer l'exception que peut générer exec().
+    *
+    */
+    public function dbCRUD($query)
     {
         try
         {
+            $res = $this->dbConnection->exec($query);
             return $res;
         }
         catch(PDOException $pdoe)
         {
-            throw new CustomException($pdoe->getMessage(),$pdoe->getCode(), $pdoe->getFile(),$pdoe->getLine());
+           echo '<p>Erreur de requete</p>';
         }
     }
 }
