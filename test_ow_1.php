@@ -34,6 +34,10 @@ $resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].
 $s->set('login',$_POST['login']);
 $s->set('status',1);
 }
+else{
+$s->set('login','');
+$s->set('status',1);	
+}
 
 print_r($resultSet);
 var_dump($_SESSION);
