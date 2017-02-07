@@ -1,8 +1,10 @@
 <?php 
 require_once('./php/autoload.php'); 
-$s = Session::getInstance('session_non_auth'); 
+$s = Session::getInstance('session'); 
 $s->setMaxHops(1000); 
 $s->setMaxAge(10000); 
+$s->setStatus('non_auth');
+$s->setLogin=$_POST['login'];
 if ($s->start()) { 
     $grainDeSel = rand();
     $newval = md5(rand().$grainDeSel); 
@@ -39,10 +41,11 @@ echo $form;
 //==================================================	
 
 
-print_r($s);
+
 
 $resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\'');
 echo '<pre>';
+print_r($s);
 print_r($resultSet);
 echo '</pre>';
 

@@ -7,6 +7,8 @@ class Session {
     // nombre maximal d'accés à la session, -1 => pas de limite 
     private $maxAge = -1;
     // durée de vie maximale d'une session-1 => pas de limite 
+	private $Status;
+	private $Login;
     private function __construct($nom) { 
         $this->nom = $nom; 
     } 
@@ -48,6 +50,21 @@ class Session {
         } 
         else { $this->maxHops = $num; } 
     } 
+    // mutateur de Status 	
+	    public function setStatus($varchar) { 
+        if (!isset($varchar)) { 
+            die(sprintf("la valeur <em>%s</em> ne peux être nulle !", htmlspecialchars($varchar)));
+        } 
+        else { $this->Status = $varchar; } 
+    } 
+	    // mutateur de login 	
+	    public function setLogin($varchar) { 
+        if (!isset($varchar)) { 
+            die(sprintf("la valeur <em>%s</em> ne peux être nulle !", htmlspecialchars($varchar)));
+        } 
+        else { $this->Login = $varchar; } 
+    } 
+	
     // mutateur de maxAge 
     public function setMaxAge($num) {
         if (!is_numeric($num)) { 
@@ -58,7 +75,15 @@ class Session {
     // accesseur au nombre de passages restants 
     public function getRemainingHops() { 
         return $_SESSION['remainHops']; 
-    } 
+	}
+	// accesseur au status
+    public function getStatus() { 
+        return $_SESSION['Status']; 
+	} 
+	// accesseur au login
+    public function getLogin() { 
+        return $_SESSION['Login']; 
+	} 
     // accesseur au temps de validité restant 
     public function getRemainingTime() { 
         return $_SESSION['time'] + $this->maxAge - time(); 
