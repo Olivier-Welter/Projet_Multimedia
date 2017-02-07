@@ -1,6 +1,6 @@
 <?php 
 require_once('./php/autoload.php'); 
-$s = Session::getInstance('MA_SESSION'); 
+$s = Session::getInstance('session_non_auth'); 
 $s->setMaxHops(1000); 
 $s->setMaxAge(10000); 
 if ($s->start()) { 
