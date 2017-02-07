@@ -36,6 +36,7 @@ class Session {
 			
             // le tableau des variables de session return true; 
         } 
+		return true;
     } 
     public function stop() { 
         if (isset($_SESSION['time'])) { 

@@ -7,6 +7,8 @@ $s->setMaxAge(10000);
 
 
 if ($s->start()) { 
+
+
  echo "session_id : ".session_id().'<br>';
 } 
 else { 
@@ -36,7 +38,7 @@ echo $form;
 
 
 
-$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\'');
+$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login']'.'&&passwd=\''.$_POST['passwd'].'\');
 print_r($resultSet);
 var_dump($_SESSION);
 
