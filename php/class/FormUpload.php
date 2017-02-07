@@ -29,12 +29,13 @@ class FormUpload extends BaseForm {
                         $chemin = "multimedia/img";
                         break;
                     case ('ogg'):
+                    case ('mp3'):
                         $chemin = 'multimedia/audio';
                 }
-                $new_name = $file['basename'];
+                $new_name = htmlspecialchars ($file['basename']);
                 $new_location = $chemin.'/'.$new_name;
                 echo $new_location."<br>\n";
-                if (move_uploaded_file($_FILES['fic']['tmp_name'],$new_location)){
+                if (move_uploaded_file(htmlspecialchars ($_FILES['fic']['tmp_name']),$new_location)){
                     echo 'transfert effectué';
                     try{
                         $dbc = new ConnectDB(
@@ -49,6 +50,9 @@ class FormUpload extends BaseForm {
                             'localhost',
                             'root',
                             '');*/
+                        //récupérer id de l'auteur
+
+                        //enregistrer fichier dans la base de données
                         $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr', 1, '".date("Y-m-d H:i:s")."')";
                         //echo $query;
                         if($res = $dbc->dbCRUD($query)){
