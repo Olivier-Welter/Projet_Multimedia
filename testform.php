@@ -6,8 +6,7 @@ $s = Session::getInstance('session_non_auth');
 $s->setMaxHops(1000); 
 $s->setMaxAge(10000); 
 if ($s->start()) { 
-    $grainDeSel = rand();
-    $newval = md5(rand().$grainDeSel); 
+
     // la variable aléatoire qui sera stockée en session 
     //printf("<h2>Il reste <em>%s</em> accès.</h2>\n", $s->getRemainingHops());
     //printf("<h2>Il reste <em>%s</em> secondes.</h2>\n", $s->getRemainingTime()); 

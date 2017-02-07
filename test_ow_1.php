@@ -7,7 +7,7 @@ $s->setMaxAge(10000);
 
 
 if ($s->start()) { 
- 
+ echo "session_id : ".session_id().'<br>';
 } 
 else { 
     echo("<p>Session terminée.</p>\n"); 
@@ -42,6 +42,7 @@ print_r($s);
 print_r($resultSet);
 echo '</pre>';
 var_dump($_SESSION);
+
 
 if(!empty($resultSet))
 {
