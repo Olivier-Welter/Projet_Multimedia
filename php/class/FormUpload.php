@@ -40,9 +40,9 @@ class FormUpload extends BaseForm {
                         $dbc = new ConnectDB(
                             'mysql',
                             'maemoon_com',
-                            'maemoon.com.mysql',
-                            'maemoon_com',
-                            'TotoIsNotTiti');
+                            'localhost',
+                            'root',
+                            '');
                         /*$dbc = new ConnectDB(
                             'mysql',
                             'mediabdd',
