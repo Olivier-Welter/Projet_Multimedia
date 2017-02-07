@@ -1,7 +1,7 @@
 <?php 
 require_once('./php/autoload.php'); 
 $s = Session::getInstance('session'); 
-$s->setMaxHops(1000); 
+
 $s->setMaxAge(10000); 
 
 
@@ -44,22 +44,7 @@ echo '</pre>';
 var_dump($_SESSION);
 
 
-if(!empty($resultSet))
-{
-    echo '<table>';
-    foreach($resultSet as $keyLine => $valLine)
-    {
-        echo '<tr>';
-        foreach($valLine as $keyCol => $val)
-        {
-            echo '<td>';
-            echo $val;
-            echo '</td>';
-        }
-        echo '</tr>';
-    }
-    echo '</table>';
-}
+
 else
 {
     echo '<p>Aucun résultat</p>';

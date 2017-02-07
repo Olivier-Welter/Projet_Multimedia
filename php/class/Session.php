@@ -3,8 +3,7 @@ class Session {
     private static $instance; 
     private $nom = 'DEF_SESSID'; 
     // le nom de la variable de session 
-    private $maxHops = -1; 
-    // nombre maximal d'accés à la session, -1 => pas de limite 
+
     private $maxAge = -1;
     // durée de vie maximale d'une session-1 => pas de limite 
 
@@ -19,19 +18,19 @@ class Session {
     public function start() { 
         session_name($this->nom); 
         session_start(); 
-        if (isset($_SESSION['time']) && isset($_SESSION['remainHops'])) { 
+        if (isset($_SESSION['time'])) { 
             // dans ce cas la session est déjà active, donc on vérifie si elle doit se poursuivre 
-            if (($this->maxAge !== -1 && time() - $_SESSION['time'] > $this->maxAge) || ($this->maxHops !== -1 && $_SESSION['remainHops'] <= 0)) {
+            if ($this->maxAge !== -1 && time() - $_SESSION['time'] > $this->maxAge) {
                 // la session est trop vielle ou trop usée, il faut la détruire 
                 session_destroy(); 
                 return false; 
             } 
-            else { $_SESSION['remainHops']--; return true; } 
+           
         } 
         else { 
             // initialisation des variables contextuelles de la session 
 			
-            $_SESSION['remainHops'] = $this->maxHops; 
+            
             $_SESSION['time'] = time(); 
             $_SESSION['vars'] = ['status' => 0, 'login'=>""]; 
 			
@@ -39,18 +38,12 @@ class Session {
         } 
     } 
     public function stop() { 
-        if (isset($_SESSION['time']) && isset($_SESSION['remainHops'])) { 
+        if (isset($_SESSION['time'])) { 
             session_destroy(); 
         } 
         else { die("la session ne peut être détruite car elle n'est pas active !"); }
     } 
-    // mutateur de maxHops 
-    public function setMaxHops($num) { 
-        if (!is_numeric($num)) { 
-            die(sprintf("la valeur <em>%s</em> n'est pas de type numérique !", htmlspecialchars($num)));
-        } 
-        else { $this->maxHops = $num; } 
-    } 
+
 
 	
     // mutateur de maxAge 
@@ -60,10 +53,7 @@ class Session {
         } 
         else { $this->maxAge = $num; } 
     } 
-    // accesseur au nombre de passages restants 
-    public function getRemainingHops() { 
-        return $_SESSION['remainHops']; 
-	}
+   
 
 
     // accesseur au temps de validité restant 
