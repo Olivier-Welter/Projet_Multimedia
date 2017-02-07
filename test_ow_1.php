@@ -32,7 +32,7 @@ $resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].
 
  if(count($resultSet)==1){
 $s->set('login',$_POST['login']);
-
+$s->set('status',1);
 }
 
 print_r($resultSet);
