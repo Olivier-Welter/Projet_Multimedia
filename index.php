@@ -63,6 +63,8 @@ else{
 $s->set('login','');
 $s->set('status',0);	
 }
+print_r($resultSet);
+var_dump($_SESSION);
 //==================================================	
 
 echo '</header>'."\n";
