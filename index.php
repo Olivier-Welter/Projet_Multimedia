@@ -30,11 +30,11 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
-echo $s->get('status');
+
 echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
-if($s->get('status')==0){
+
 echo $form_Auth;
-}
+
 echo '</header>'."\n";
 
 echo '<div>'."\n";
