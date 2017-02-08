@@ -10,6 +10,11 @@ class ConnectDB
     private $dbURL;
     private $dbName;
     private $dbConnection = NULL;
+    const DBTYPE='mysql';
+    const DBUSER='root';
+    const DBPWD='';
+    const DBURL='localhost';
+    const DBNAME='maemoon_com';
 
     //*******************************Constructeur*****************************
     public function __construct($valDBType, $valDBName, $valDBURL, $valDBUser, $valDBPassword)
@@ -147,6 +152,37 @@ class ConnectDB
         catch(PDOException $pdoe)
         {
            echo '<p>Erreur de requete</p>';
+        }
+    }
+
+    public static function dbQRY($query)
+    {
+        try
+        {
+            $this->dbConnection = new PDO(self::DBTYPE.":host=".self::DBURL.";dbname=".self::DBNAME, self::DBUSER, self::DBPWD);
+            $this->dbConnection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        }
+        catch(PDOException $pdoe)
+        {
+            echo '<p class=error>Erreur de connexion à la base de données</p>';
+        }
+
+        try
+        {
+            //prépare la requête à être exécutée.
+            $res = $this->dbConnection->prepare($query);
+            $res->execute();
+
+            if($res != false)
+            {
+                //si la requete produit des résultat, ils sont retournés sinon la méthode retourne NULL
+                return $res->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return NULL;
+        }
+        catch(PDOException $pdoe)
+        {
+            echo '<p class=error>Erreur lors de la requête dans la base de données.</p>';
         }
     }
 }

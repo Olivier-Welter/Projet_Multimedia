@@ -5,6 +5,11 @@ $s = Session::getInstance('session_non_auth');
 $s->setMaxAge(10000); 
 $s->start();
 
+//Création des variables pour afficher les données correctement.
+
+
+
+//Affichage des champs HTML
 echo <<< EOT
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
@@ -18,6 +23,7 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
+
 echo '</header>'."\n";
 
 echo <<< EOF
