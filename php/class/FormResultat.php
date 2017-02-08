@@ -43,17 +43,17 @@ class FormResultat {
                            case("image/svg"):
                              case ('image/png'):
                             case ('image/gif'):
-                            $str=$str."<img src='$v' class='vignette'/>";
+                            $str=$str."<img src='multimedia/img/$v' class='vignette'/>";
                            break;
                            case("audio/ogg"):
                            case("audio/mp3"): 
                             $str=$str."<audio controls> 
-                           <source src='$v' type='".$value['mime_type']."' class='vignette'/></audio>";
+                           <source src='multimedia/audio/$v' type='".$value['mime_type']."' class='vignette'/></audio>";
                            break;
                            case("video/webm"):
                            case("video/mp4"):
                             $str=$str."<video controls> 
-                           <source src='$v' type='".$value['mime_type']."' class='vignette'/></video>";
+                           <source src='multimedia/video/$v' type='".$value['mime_type']."' class='vignette'/></video>";
                            break;
                    }
         

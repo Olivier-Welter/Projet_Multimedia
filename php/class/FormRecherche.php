@@ -13,10 +13,12 @@ class FormRecherche extends BaseForm {
             //print_r($_POST);
             $this->champsAttr[0]['value'] = htmlspecialchars ($_POST['auteur']);
             $this->champsAttr[1]['value'] = htmlspecialchars ($_POST['descr']);
-            foreach($_POST['type'] as $val){
+            if (isset($_POST['type'])){
+                foreach($_POST['type'] as $val){
                 if ($val == 'img') $this->champsAttr[2]['checked'] = 'checked';
                 if ($val == 'audio') $this->champsAttr[3]['checked'] = 'checked';
                 if ($val == 'video') $this->champsAttr[4]['checked'] = 'checked';
+                }
             }
         }
     }
@@ -26,12 +28,20 @@ class FormRecherche extends BaseForm {
 
     public function search(){
         $query = "SELECT auteur_id,description,date FROM datas WHERE date LIMIT 5";
-        if($this->verif()){
+        if(isset($this->champsAttr[0]['value'])){
             $query = "SELECT * from datas";
-            if (isset($this->champsAttr[0]['value'])){
+            if($this->champsAttr[0]['value']!=''){
                 $query .= " WHERE auteur_id = '".$this->champsAttr[0]['value']."'";
+                if($this->champsAttr[1]['value']!=''){
+                    $query.=" AND description LIKE '%".$this->champsAttr[1]['value']."%'";
+                }
+            }else{
+                if($this->champsAttr[1]['value']!=''){
+                    $query.=" WHERE description LIKE '%".$this->champsAttr[1]['value']."%'";
+                }
             }
         }
+        echo $query;
         return ($query);
     }
 
