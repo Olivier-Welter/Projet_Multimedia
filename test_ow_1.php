@@ -31,7 +31,7 @@ echo $form;
 //==================================================	
 //$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
 
-$resultSet = ConnectDB::dbQRY('SELECT * FROM users WHERE login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
+$resultSet = ConnectDB::dbQuery('SELECT * FROM users WHERE login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
  if(count($resultSet)==1){
 $s->set('login',$_POST['login']);
 $s->set('status',1);
