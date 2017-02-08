@@ -75,11 +75,11 @@ class FormRecherche extends BaseForm {
                     }
                 }
             }
+            //création de la requête à partir des deux conditions
+            if(($cond1!='')&&($cond2!='')){$query .= $cond1." AND ".$cond2; }
+            elseif(($cond1=='')&&($cond2!='')){$query .= " WHERE ".$cond2; }
+            else{$query .= $cond1; }
         }
-        //création de la requête à partir des deux conditions
-        if(($cond1!='')&&($cond2!='')){$query .= $cond1." AND ".$cond2; }
-        elseif(($cond1=='')&&($cond2!='')){$query .= " WHERE ".$cond2; }
-        else{$query .= $cond1; }
         return ($query);
     }
 
