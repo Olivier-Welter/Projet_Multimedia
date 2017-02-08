@@ -28,6 +28,16 @@ if ($s->start()) {
             $form = new FormRecherche();
             echo $form;
 
+
+        ?>
+        </div>
+
+        <div class="form">
+            <h2>Résultats</h2>
+            <?php
+            $res = new FormResultat($form->search());
+                echo $res;
+
         ?>
         </div>
     </body>
