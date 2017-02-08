@@ -33,6 +33,15 @@ class FormResultat {
        echo $query;
     }*/
     function __toString(){
-        return "(".$this->result.")";
+        $str = ""; 
+        foreach ($this->result as $key => $value){
+            
+            foreach ($value as $k=>$v){
+               
+                $str=$str."$k : $v"."<br/>";          
+            }
+           $str=$str."<br/>\n"; 
+        }
+       return $str;
     }
 }
