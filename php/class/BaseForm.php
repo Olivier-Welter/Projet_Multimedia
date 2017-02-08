@@ -18,7 +18,7 @@ abstract class BaseForm {
     public function __toString(){
         $str = '';
         foreach($this->champsAttr as $key => $val){
-            $in = new HTMLBalises($this->champsType[$key], $val, 'test');
+            $in = new HTMLBalises($this->champsType[$key], $val);
             if($this->champsLabel[$key] !== ''){
                 $elem = new HTMLBalises('label', [], $this->champsLabel[$key].$in);
                 $str.=' '.$elem;

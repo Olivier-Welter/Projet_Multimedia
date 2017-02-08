@@ -5,7 +5,7 @@ class FormUpload extends BaseForm {
         $this->formAttr = ['action'=>'#', 'method'=>'post', 'name'=>'upload', 'enctype'=>"multipart/form-data"];
         $this->addElem('input', ['type' => 'file', 'name' => 'fic'], 'Fichier : ');
         $this->addElem('input', ['type' => 'hidden', 'name'=>"MAX_FILE_SIZE", 'value'=>"100000000"]);
-        $this->addElem('input', ['name' => "descr", 'type' => 'text'], 'Description : ');
+        $this->addElem('textarea', ['name' => "descr"], 'Description : ');
         $this->addElem('input', ['name' => "send", 'type' => 'submit', 'value'=>'Envoyer']);
 
         if(isset($_POST['send'])){
@@ -51,10 +51,11 @@ class FormUpload extends BaseForm {
                             'root',
                             '');*/
                         //récupérer id de l'auteur
-
+                        $s = Session::getInstance();
+                        $auteur = $s->get('login');
                         //enregistrer fichier dans la base de données
-                        $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr', 1, '".date("Y-m-d H:i:s")."')";
-                        //echo $query;
+                        $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr','$auteur', '".date("Y-m-d H:i:s")."')";
+                        echo $query;
                         if($res = $dbc->dbCRUD($query)){
                             echo "<p>Le fichier $new_name a bien été envoyé</p>\n";
                         }
@@ -68,10 +69,11 @@ class FormUpload extends BaseForm {
         }
     }
 
-    /*public function __toString(){ $str = ''; foreach($this->champsAttr as $key => $val){ $in = new HTMLBalises($this->champsType[$key], $val, 'test'); if($this->champsLabel[$key] !== ''){ $elem = new HTMLBalises('label', [], $this->champsLabel[$key].$in); $str.=' '.$elem; }else{ $str.=' '.$in; } $str.=' '.new HTMLBalises('br'); } $form = new HTMLBalises('form', ['action'=>'#', 'method'=>'post', 'name'=>'searchform'], $str); return "$form"; }*/
-
     public function verif(){
+        //vérifier longueur description
+
+        //vérifier caractères nom du fichier
+
         return true;
-        //return Validator::check_desc_search($champsAtrr[1]['value']);
     }
 }
