@@ -24,6 +24,14 @@ if ($s->start()) {
         </header>
 		<div class="form">
 			<?php
+			
+				$dbc = new ConnectDB(
+				'mysql',
+				'maemoon_com',
+				'localhost',
+				'root',
+				'');
+				
 				$faut = new FormAuth();
 				echo $faut;
 				//==================================================	
