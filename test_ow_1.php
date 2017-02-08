@@ -11,12 +11,12 @@ else {
     echo("<p>Session terminée.</p>\n"); 
     }
 //==================================================	
-	$dbc = new ConnectDB(
-        'mysql',
-        'maemoon_com',
-        'localhost',
-        'root',
-        '');
+	// $dbc = new ConnectDB(
+        // 'mysql',
+        // 'maemoon_com',
+        // 'localhost',
+        // 'root',
+        // '');
 	
 		//$dbc->dbQuery('SELECT * FROM users');
 // $dbc = new ConnectDB(
@@ -30,7 +30,8 @@ $form = new FormAuth();
 echo $form;
 //==================================================	
 //$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
-$resultSet = ConnectDB::dbQRY("SELECT * FROM users WHERE login='".$id." AND  passwd='".$mdp."'");
+
+$resultSet = ConnectDB::dbQRY('SELECT * FROM users WHERE login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
  if(count($resultSet)==1){
 $s->set('login',$_POST['login']);
 $s->set('status',1);
