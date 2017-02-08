@@ -16,6 +16,8 @@ $form_Resul = new FormResultat($form_Rech->search());
 
 
 
+
+
 //============================Code d'affichage de la page'
 echo <<< EOT
 <!DOCTYPE html>
@@ -30,11 +32,41 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
-echo $s->get('status');
+
 echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
-if($s->get('status')==0){
+
 echo $form_Auth;
+
+//==================================================	
+	$dbc = new ConnectDB(
+        'mysql',
+        'maemoon_com',
+        'localhost',
+        'root',
+        '');
+	
+		//$dbc->dbQuery('SELECT * FROM users');
+// $dbc = new ConnectDB(
+//         'mysql',
+//         'mediabdd',
+//         'localhost',
+//         'root',
+//         '');
+
+$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
+
+ if(count($resultSet)==1){
+$s->set('login',$_POST['login']);
+$s->set('status',1);
 }
+else{
+$s->set('login','');
+$s->set('status',0);	
+}
+print_r($resultSet);
+var_dump($_SESSION);
+//==================================================	
+
 echo '</header>'."\n";
 
 echo '<div>'."\n";

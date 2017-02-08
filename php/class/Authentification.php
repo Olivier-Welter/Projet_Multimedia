@@ -10,6 +10,7 @@ class Authentification
     private function __construct()
     {
         $inst_session = Session::getInstance();
+
     }
 
     //methode
@@ -24,7 +25,7 @@ class Authentification
 
     public function checkUser($id,$mdp)
     {
-        $res = DBConnect::dbQRY("SELECT * FROM users WHERE login='".$id." AND  passwd='".$mdp."'");
+        $res = ConnectDB::dbQRY("SELECT * FROM users WHERE login='".$id." AND  passwd='".$mdp."'");
         if($res != null)
         {
             return true;
