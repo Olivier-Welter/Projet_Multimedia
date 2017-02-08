@@ -21,11 +21,16 @@ if ($s->start()) {
     <body>
         <header>
             <h1>Projet PHP Objet</h1>
+		
         </header>
 	
         <div class="form">
             <h2>Déposer un fichier</h2>
             <?php
+	
+			$faut = new FormAuth2();
+				echo $faut;
+	
             $form = new FormUpload();
             echo $form;
         ?>
