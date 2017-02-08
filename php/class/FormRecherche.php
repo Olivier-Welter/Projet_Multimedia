@@ -70,11 +70,10 @@ class FormRecherche extends BaseForm {
                 }
             }else{
                 if($this->champsAttr[1]['value']!=''){
-                    $query.=" WHERE description LIKE '%".$this->champsAttr[1]['value']."%'";
+                    $query.=" AND description LIKE '%".$this->champsAttr[1]['value']."%'";
                 }
             }
         }
-        echo $query;
         return ($query);
     }
 
