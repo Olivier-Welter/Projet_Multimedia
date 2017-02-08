@@ -1,5 +1,5 @@
 <?php
-class FormAuth extends BaseForm {
+class FormAuth2 extends BaseForm {
 
     public function __construct(){
         $this->formAttr = ['action'=>'#', 'method'=>'post', 'name'=>'authform'];
@@ -12,6 +12,15 @@ class FormAuth extends BaseForm {
            
             $this->champsAttr[0]['value'] = $_POST['login'];
             $this->champsAttr[1]['value'] = $_POST['passwd'];
+			
+			$s = Session::getInstance('session_non_auth'); 
+$s->setMaxAge(10000); 
+
+if ($s->start()) { 
+ echo "session_id : ".session_id().'<br>';
+} else {
+    print("<p>Session terminée.</p>\n"); 
+}
 		 	$dbc = new ConnectDB(
 				'mysql',
 				'maemoon_com',
