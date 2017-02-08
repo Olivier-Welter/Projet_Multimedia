@@ -13,7 +13,7 @@ class Authentification
     }
 
     //methode
-    public static function isAuth()
+    public function isAuth()
     {
         if(!isset($inst_session))
         {
@@ -22,7 +22,7 @@ class Authentification
         return self::$inst_session->get('status');
     }
 
-    public static function checkUser($id,$mdp)
+    public function checkUser($id,$mdp)
     {
         $res = DBConnect::dbQRY("SELECT * FROM users WHERE login='".$id." AND  passwd='".$mdp."'");
         if($res != null)
