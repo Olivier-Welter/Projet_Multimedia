@@ -36,7 +36,7 @@ if ($s->start()) {
 				echo $faut;
 				//==================================================	
 				$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
-
+if($s->get('status')==0){
 				if(count($resultSet)==1){
 				$s->set('login',$_POST['login']);
 				$s->set('status',1);
@@ -48,6 +48,7 @@ if ($s->start()) {
 
 				print_r($resultSet);
 				var_dump($_SESSION);
+}
 			?>
 		</div>		
         <div class="form">
