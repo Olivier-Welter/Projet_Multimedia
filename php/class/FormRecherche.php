@@ -39,41 +39,47 @@ class FormRecherche extends BaseForm {
         $query = "SELECT * FROM datas ORDER BY date LIMIT 5";
         //si on a récupéré des valeurs on les utilise pour la recherche
         if(isset($this->champsAttr[0]['value'])){
-            //recheche en fonction du type de fichiers
-            $query = "SELECT * from datas WHERE (";
-            if (isset($this->champsAttr[2]['checked'])){
-                $query.="mime_type LIKE 'image/%'";
-                if (isset($this->champsAttr[3]['checked'])){
-                    $query.=" OR mime_type LIKE 'audio/%'";
-                }
-                if (isset($this->champsAttr[4]['checked'])){
-                    $query.=" OR mime_type LIKE 'video/%'";
+            $query = "SELECT * from datas";
+            //recherche de l'auteur et de la description
+            $cond1 = '';
+            if($this->champsAttr[0]['value']!=''){
+                $cond1 .= " WHERE auteur_id LIKE '%".$this->champsAttr[0]['value']."%'";
+                if($this->champsAttr[1]['value']!=''){
+                    $cond1.=" AND description LIKE '%".$this->champsAttr[1]['value']."%'";
                 }
             }else{
+                if($this->champsAttr[1]['value']!=''){
+                    $cond1.=" WHERE description LIKE '%".$this->champsAttr[1]['value']."%'";
+                }
+            }
+            //recheche en fonction du type de fichiers
+            $cond2 = '';
+            if (isset($this->champsAttr[2]['checked'])){
+                $cond2.="(mime_type LIKE 'image/%'";
                 if (isset($this->champsAttr[3]['checked'])){
-                    $query.="mime_type LIKE 'audio/%'";
+                    $cond2.=" OR mime_type LIKE 'audio/%'";
+                }
+                if (isset($this->champsAttr[4]['checked'])){
+                    $cond2.=" OR mime_type LIKE 'video/%'";
+                }
+                $cond2.=")";
+            }else{
+                if (isset($this->champsAttr[3]['checked'])){
+                    $cond2.="(mime_type LIKE 'audio/%'";
                     if (isset($this->champsAttr[4]['checked'])){
-                        $query.=" OR mime_type LIKE 'video/%'";
+                        $cond2.=" OR mime_type LIKE 'video/%'";
                     }
                 }else{
                     if (isset($this->champsAttr[4]['checked'])){
-                        $query.="mime_type LIKE 'video/%'";
+                        $cond2.="(mime_type LIKE 'video/%')";
                     }
                 }
             }
-            $query.=")";
-            //recherche de l'auteur et de la description
-            if($this->champsAttr[0]['value']!=''){
-                $query .= " AND auteur_id LIKE '%".$this->champsAttr[0]['value']."%'";
-                if($this->champsAttr[1]['value']!=''){
-                    $query.=" AND description LIKE '%".$this->champsAttr[1]['value']."%'";
-                }
-            }else{
-                if($this->champsAttr[1]['value']!=''){
-                    $query.=" AND description LIKE '%".$this->champsAttr[1]['value']."%'";
-                }
-            }
         }
+        //création de la requête à partir des deux conditions
+        if(($cond1!='')&&($cond2!='')){$query .= $cond1." AND ".$cond2; }
+        elseif(($cond1=='')&&($cond2!='')){$query .= " WHERE ".$cond2; }
+        else{$query .= $cond1; }
         return ($query);
     }
 
