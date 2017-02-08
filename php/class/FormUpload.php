@@ -55,7 +55,7 @@ class FormUpload extends BaseForm {
                         $auteur = $s->get('login');
                         //enregistrer fichier dans la base de données
                         $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr','$auteur', '".date("Y-m-d H:i:s")."')";
-                        echo $query;
+                        //echo $query;
                         if($res = $dbc->dbCRUD($query)){
                             echo "<p>Le fichier $new_name a bien été envoyé</p>\n";
                         }
@@ -63,7 +63,7 @@ class FormUpload extends BaseForm {
                         echo "Erreur lors de l'envoi en base de données : $e->getMessage()\n";
                     }
                 } else {
-                    echo 'ereur transfert : '.$_FILES['fic']['error'];
+                    echo 'Ereur transfert : '.$_FILES['fic']['error'];
                 }
             }
         }

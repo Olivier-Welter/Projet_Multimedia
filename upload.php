@@ -6,8 +6,9 @@ $s->setMaxAge(10000);
 $s->start();
 
 //Création des variables pour afficher les données correctement.
+$form_up = new FormUpload();
 
-
+$s->set('login','toto');//juste pour le test, à virer quand il y aura la connexion
 
 //Affichage des champs HTML
 echo <<< EOT
@@ -25,6 +26,10 @@ EOT;
 echo '<header>'."\n";
 
 echo '</header>'."\n";
+
+echo '<div class = "form">'."\n";
+echo $form_up;
+echo '</div>'."\n";
 
 echo <<< EOF
     </body>
