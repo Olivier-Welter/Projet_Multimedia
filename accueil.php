@@ -27,8 +27,6 @@ if ($s->start()) {
             <?php
             $form = new FormRecherche();
             echo $form;
-			$rech = new FormResultat();
-			echo $rech;
-        ?>
+	
         </div>
     </body>
