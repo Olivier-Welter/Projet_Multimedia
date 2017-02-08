@@ -3,7 +3,7 @@
 /*class FormResultat {
     
     private $query;
-    
+    private $result;
     /**
     * on informe les inputs dans la recherche 
     quand on click sur valider
@@ -11,14 +11,14 @@
     de la plus récente à la moins récente avec la vignette, 
     la description et l'élément recherché 
     *
-    function __construct ($query,$res){
+    function __construct ($query){
         $this->query=$query;
-        if (isset($POST['auteur']) || (isset($POST['descr']) ||(isset($POST['type[]']) ){
+        if (isset($POST['auteur']) || (isset($POST['descr']){
             afficherResult();
         } else {
             affichePremFois();
         }
-       // $this->addElem('div',['name'=>'auteur_id', 'name'=>'description','name'=>'date']);
+       
     }
     
     function afficherPremFois(){ // affichage des derniers rajouts quand l'utilisateur est là pour la première fois
@@ -32,17 +32,3 @@
     }
     
 }*/
-
-class FormResultat
-{
-   public function fonctiontest()
-   {
-      $res=array();
-      $query=mysql_query("SELECT auteur_id,description,date FROM datas WHERE date");
-      while($reponse=mysql_fetch_array($query)){
-          $res[]=$reponse;
-      }
-      return $res;
-   }
-}
-?>
