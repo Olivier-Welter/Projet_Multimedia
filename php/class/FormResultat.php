@@ -34,7 +34,8 @@ class FormResultat {
     }*/
     function __toString(){
         $str = ""; 
-        foreach ($this->result as $key => $value){
+        if(count($this->result)>0){
+             foreach ($this->result as $key => $value){
            
             foreach ($value as $k=>$v){
                if ($k=="chemin_relatif"){
@@ -63,6 +64,10 @@ class FormResultat {
             }
            $str=$str."<br/>\n"; 
         }
+        }else{
+            $str ="Aucun résultat";
+        }
+       
        return $str;
     }
 }
