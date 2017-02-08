@@ -11,13 +11,14 @@ echo <<< EOT
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Bibliothèque multimédia</title>
+		<title>Bibliothèque multim&eacute;dia</title>
 		<link rel="stylesheet" href="./css/default.css">
 	</head>
 	<body>
 
 EOT;
 echo '<header>'."\n";
+echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>';
 echo '</header>'."\n";
 
 echo <<< EOF
