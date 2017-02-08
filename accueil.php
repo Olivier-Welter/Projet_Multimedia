@@ -27,6 +27,6 @@ if ($s->start()) {
             <?php
             $form = new FormRecherche();
             echo $form;
-	
+			?>
         </div>
     </body>
