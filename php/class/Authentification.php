@@ -15,6 +15,10 @@ class Authentification
     //methode
     public function isAuth()
     {
+        if(!isset($inst_session))
+        {
+            return false;
+        } 
         return self::$inst_session->get('status');
     }
 
