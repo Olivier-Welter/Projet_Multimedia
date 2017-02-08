@@ -15,19 +15,19 @@ if ($s->start()) {
     <head>
         <meta charset='utf-8' />
         <link href="css/default.css" rel="stylesheet" />
-        <title>Recherche de fichiers</title>
+        <title>Upload de fichiers</title>
     </head>
 
     <body>
         <header>
             <h1>Projet PHP Objet</h1>
         </header>
+	
         <div class="form">
-            <h2>Rechercher un fichier</h2>
+            <h2>Déposer un fichier</h2>
             <?php
-            $form = new FormRecherche();
+            $form = new FormUpload();
             echo $form;
-
         ?>
         </div>
     </body>
