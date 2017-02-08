@@ -25,10 +25,8 @@ if ($s->start()) {
         <div class="form">
             <h2>Rechercher un fichier</h2>
             <?php
-            $form = new FormRecherche();
+            $form = new FormResultat();
             echo $form;
-			$rech = new FormResultat();
-			echo $rech;
         ?>
         </div>
     </body>
