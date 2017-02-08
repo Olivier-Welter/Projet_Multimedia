@@ -11,7 +11,7 @@ echo <<< EOT
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Bibliothèque multimédia</title>
+		<title>Connexion - Bibliothèque multimédia</title>
 		<link rel="stylesheet" href="./css/default.css">
 	</head>
 	<body>
