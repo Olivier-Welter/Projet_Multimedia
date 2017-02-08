@@ -10,6 +10,7 @@ class Authentification
     private function __construct()
     {
         $inst_session = Session::getInstance();
+
     }
 
     //methode
