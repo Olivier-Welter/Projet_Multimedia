@@ -22,6 +22,34 @@ if ($s->start()) {
         <header>
             <h1>Projet PHP Objet</h1>
         </header>
+		<div class="form">
+			<?php
+			
+				$dbc = new ConnectDB(
+				'mysql',
+				'maemoon_com',
+				'localhost',
+				'root',
+				'');
+				
+				$faut = new FormAuth();
+				echo $faut;
+				//==================================================	
+				$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
+
+				if(count($resultSet)==1){
+				$s->set('login',$_POST['login']);
+				$s->set('status',1);
+				}
+				else{
+				$s->set('login','');
+				$s->set('status',0);	
+				}
+
+				print_r($resultSet);
+				var_dump($_SESSION);
+			?>
+		</div>		
         <div class="form">
             <h2>Déposer un fichier</h2>
             <?php
