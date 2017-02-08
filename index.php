@@ -5,18 +5,10 @@ $s = Session::getInstance();
 $s->setMaxAge(10000); 
 $s->start();
 
-
 $form_Auth = new FormAuth();
-
 
 $form_Rech = new FormRecherche();
 $form_Resul = new FormResultat($form_Rech->search());
-
-
-
-
-
-
 
 //============================Code d'affichage de la page'
 echo <<< EOT
