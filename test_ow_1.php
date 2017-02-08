@@ -4,7 +4,7 @@ $s = Session::getInstance();
 $s->setMaxAge(10000); 
 
 if ($s->start()) { 
- echo "session_id : ".session_id().'<br>';
+ echo "<h3>session_id : ".session_id().'</h3><br>';
 } 
 else { 
     echo("<p>Session terminée.</p>\n"); 
