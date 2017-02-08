@@ -13,11 +13,12 @@
     *
     function __construct ($query){
         $this->query=$query;
-        if (isset($POST['auteur']) || (isset($POST['descr']){
-            afficherResult();
-        } else {
-            affichePremFois();
-        }
+     $dbc = new ConnectDB(
+                            'mysql',
+                            'maemoon_com',
+                            'localhost',
+                            'root',
+                            '');
        
     }
     
