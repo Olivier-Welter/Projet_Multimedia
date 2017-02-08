@@ -28,7 +28,7 @@ class Authentification
         return false;
     }
 
-    public static function getAuth()
+    public static function getInstance()
     {
         if(!self::$inst_auth)
         {
