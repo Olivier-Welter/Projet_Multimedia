@@ -35,10 +35,31 @@ class FormResultat {
     function __toString(){
         $str = ""; 
         foreach ($this->result as $key => $value){
-            
+           
             foreach ($value as $k=>$v){
-               
-                $str=$str."$k : $v"."<br/>";          
+               if ($k=="chemin_relatif"){
+                   switch($value['mime_type']){
+                           case("image/jpeg"):
+                           case("image/svg"):
+                             case ('image/png'):
+                            case ('image/gif'):
+                            $str=$str."<img src='$v' class='vignette'/>";
+                           break;
+                           case("audio/ogg"):
+                           case("audio/mp3"): 
+                            $str=$str."<audio controls> 
+                           <source src='$v' type='".$value['mime_type']."' class='vignette'/></audio>";
+                           break;
+                           case("video/webm"):
+                           case("video/mp4"):
+                            $str=$str."<video controls> 
+                           <source src='$v' type='".$value['mime_type']."' class='vignette'/></video>";
+                           break;
+                   }
+        
+            }else{
+                $str=$str."$k : $v"."<br/>";    
+               }
             }
            $str=$str."<br/>\n"; 
         }
