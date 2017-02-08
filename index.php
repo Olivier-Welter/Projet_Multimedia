@@ -1,5 +1,5 @@
 <?php
-
+//==================================Code de calcul des données de la page
 require_once('php/autoload.php');
 $s = Session::getInstance('session_non_auth');
 $s->setMaxAge(10000); 
@@ -9,6 +9,11 @@ $form_Auth = new FormAuth();
 $form_Rech = new FormRecherche();
 $form_Resul = new FormResultat($form_Rech->search());
 
+
+
+
+
+//============================Code d'affichage de la page'
 echo <<< EOT
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
