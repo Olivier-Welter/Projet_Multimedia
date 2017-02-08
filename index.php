@@ -5,7 +5,10 @@ $s = Session::getInstance();
 $s->setMaxAge(10000); 
 $s->start();
 
+
 $form_Auth = new FormAuth();
+
+
 $form_Rech = new FormRecherche();
 $form_Resul = new FormResultat($form_Rech->search());
 
@@ -27,8 +30,11 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
+echo $s->get('status');
 echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
+if($s->get('status')==0){
 echo $form_Auth;
+}
 echo '</header>'."\n";
 
 echo '<div>'."\n";
