@@ -30,7 +30,7 @@ class FormResultat {
         if(count($this->result)>0){
             foreach ($this->result as $key => $value){
                 $str .= "<span class='resume'>";
-                if($value['mime_type']=='video/ogg'){
+                if($value['mime_type']=='video/ogg'){ //pour le problème des ogg qui passent en tant que vidéo, voir si on trouve une meilleure solution
                     $mime = 'audio';
                 }else{
                     $mime = substr($value['mime_type'], 0, 5);
@@ -53,7 +53,6 @@ class FormResultat {
                 $str.="Auteur : ".$value['auteur_id']."<br/>\n";
                 $str.="Description : $descr<br/>\n";
                 $str.="Date ajout : ".$value['date']."<br/>\n";
-
                 $str.="</span>\n";
             }
         }else{
@@ -96,4 +95,3 @@ class FormResultat {
        
        return $str;
     }*/
-}
