@@ -48,7 +48,7 @@ class HTMLBalises
                 break;
             default:
                 $toString = $toString.'>'."\n";
-                $toString = $toString.' '.$this->htmlBaliseMsg;
+                $toString = $toString.$this->htmlBaliseMsg;
                 $toString = $toString.'</'.$this->htmlBaliseType.'>'."\n";
         }
         return $toString;
