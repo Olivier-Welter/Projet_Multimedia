@@ -188,7 +188,7 @@ class ConnectDB
         }
     }
 
-    
+
     //===================================
     public static function dbCRUD($query)
     {
@@ -205,7 +205,7 @@ class ConnectDB
 
         try
         {
-            $res = $this->dbConnection->exec($query);
+            $res = $dbc->exec($query);
             return $res;
         }
         catch(PDOException $pdoe)
