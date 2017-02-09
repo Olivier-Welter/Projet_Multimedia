@@ -37,31 +37,19 @@ class FormUpload extends BaseForm {
                 //echo $new_location."<br>\n";
                 if (move_uploaded_file(htmlspecialchars ($_FILES['fic']['tmp_name']),$new_location)){
                     //echo 'transfert effectué';
-                    try{
-                        $dbc = new ConnectDB(
-                            'mysql',
-                            'maemoon_com',
-                            'localhost',
-                            'root',
-                            '');
-                        /*$dbc = new ConnectDB(
-                            'mysql',
-                            'mediabdd',
-                            'localhost',
-                            'root',
-                            '');*/
+                    //try{
                         //récupérer id de l'auteur
                         $s = Session::getInstance();
                         $auteur = $s->get('login');
                         //enregistrer fichier dans la base de données
                         $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr','$auteur', '".date("Y-m-d H:i:s")."')";
                         //echo $query;
-                        if($res = $dbc->dbCRUD($query)){
+                        if($res = ConnectDB::dbCRUD($query)){
                             echo "<p>Le fichier $new_name a bien été envoyé</p>\n";
                         }
-                    }catch (Exception $e){
+                    /*}catch (Exception $e){
                         echo "Erreur lors de l'envoi en base de données : $e->getMessage()\n";
-                    }
+                    }*/
                 } else {
                     echo 'Ereur transfert : '.$_FILES['fic']['error'];
                 }
