@@ -159,8 +159,8 @@ class ConnectDB
     {
         try
         {
-            $this->dbConnection = new PDO(self::DBTYPE.":host=".self::DBURL.";dbname=".self::DBNAME, self::DBUSER, self::DBPWD);
-            $this->dbConnection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            $dbc = new PDO(self::DBTYPE.":host=".self::DBURL.";dbname=".self::DBNAME, self::DBUSER, self::DBPWD);
+            $dbc->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $pdoe)
         {
@@ -170,7 +170,7 @@ class ConnectDB
         try
         {
             //prépare la requête à être exécutée.
-            $res = $this->dbConnection->prepare($query);
+            $res = $dbc->prepare($query);
             $res->execute();
 
             if($res != false)
@@ -182,7 +182,7 @@ class ConnectDB
         }
         catch(PDOException $pdoe)
         {
-            echo '<p class=error>Erreur lors de la requête dans la base de données.</p>';
+            echo '<p class=error>ConnectDB : Erreur lors de la requête dans la base de données.</p>';
         }
     }
 }
