@@ -36,7 +36,7 @@ class FormRecherche extends BaseForm {
     */
     public function search(){
         //si on a pas lancé de recherche on utilise la requête par défaut
-        $query = "SELECT * FROM datas ORDER BY date LIMIT 5";
+        $query = "SELECT * FROM datas ORDER BY date DESC LIMIT 5";
         //si on a récupéré des valeurs on les utilise pour la recherche
         if(isset($this->champsAttr[0]['value'])){
             $query = "SELECT * from datas";
@@ -69,6 +69,7 @@ class FormRecherche extends BaseForm {
                     if (isset($this->champsAttr[4]['checked'])){
                         $cond2.=" OR mime_type LIKE 'video/%'";
                     }
+                    $cond2.=")";
                 }else{
                     if (isset($this->champsAttr[4]['checked'])){
                         $cond2.="(mime_type LIKE 'video/%')";
