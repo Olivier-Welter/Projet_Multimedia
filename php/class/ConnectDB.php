@@ -35,7 +35,7 @@ class ConnectDB
     *Cette connexion est affectée à la variable membre $dbConnection.
     *
     */
-    private function dbConnect()
+    private static function dbConnect()
     {
         //Tentative de connexion à la base de données
         try
@@ -60,7 +60,7 @@ class ConnectDB
     */
     public static function dbQRY($query)
     {
-        $dbc = $this->dbConnect();
+        $dbc = self::dbConnect();
         try
         {
             //prépare la requête à être exécutée.
