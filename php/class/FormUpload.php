@@ -22,10 +22,14 @@ class FormUpload extends BaseForm {
                         $chemin = 'multimedia/video';
                         break;
                     case ('image'):
-                        $chemin = "multimedia/img";
+                        $chemin = "multimedia/image";
                         break;
                     case ('audio'):
                         $chemin = 'multimedia/audio';
+                        break;
+                    default:
+                        $this->msg = 'Format de fichier non supporté : '.$_FILES['fic']['type'];
+                        return;
                 }
                 /*switch ($file['extension']){
                     case ('webm'):

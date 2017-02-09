@@ -24,8 +24,47 @@ class FormResultat {
         $query="SELECT auteur_id,description,date FROM datas WHERE date";
        echo $query;
     }*/
+
     function __toString(){
         $str = ""; 
+        if(count($this->result)>0){
+            foreach ($this->result as $key => $value){
+                $str .= "<span class='resume'>";
+                if($value['mime_type']=='video/ogg'){
+                    $mime = 'audio';
+                }else{
+                    $mime = substr($value['mime_type'], 0, 5);
+                }
+                $chemin = 'multimedia/'.$mime.'/'.$value['chemin_relatif'];
+                $descr = $value['description'];
+                switch($mime){
+                    case("image"):
+                        $str=$str."<img src='$chemin' class='vignette' alt='$descr'/>\n";
+                        break;
+                    case("audio"):
+                        $str=$str."<audio controls class='vignette'>
+                        <source src='$chemin' type='".$value['mime_type']."'/></audio>\n";
+                        break;
+                    case("video"):
+                        $str=$str."<video controls class='vignette'>
+                        <source src='$chemin' type='".$value['mime_type']."'/></video>\n";
+                        break;
+                }
+                $str.="Auteur : ".$value['auteur_id']."<br/>\n";
+                $str.="Description : $descr<br/>\n";
+                $str.="Date ajout : ".$value['date']."<br/>\n";
+
+                $str.="</span>\n";
+            }
+        }else{
+            $str ="Aucun résultat";
+        }
+       return $str;
+    }
+}
+
+    /*function __toString(){
+        $str = "";
         if(count($this->result)>0){
              foreach ($this->result as $key => $value){
            
@@ -56,5 +95,5 @@ class FormResultat {
         }
        
        return $str;
-    }
+    }*/
 }
