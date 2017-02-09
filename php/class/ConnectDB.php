@@ -3,31 +3,11 @@
 class ConnectDB
 {
     //*******************************Variables membres*****************************
-    //type de 
-    // private $dbType;
-    // private $dbUser;
-    // private $dbPassword;
-    // private $dbURL;
-    // private $dbName;
-    // private $dbConnection = NULL;
     const DBTYPE='mysql';
     const DBUSER='root';
     const DBPWD='';
     const DBURL='localhost';
     const DBNAME='maemoon_com';
-
-    //*******************************Constructeur*****************************
-    // public function __construct($valDBType, $valDBName, $valDBURL, $valDBUser, $valDBPassword)
-    // {
-    //     $this->__set('dbType',$valDBType);
-    //     $this->__set('dbUser',$valDBUser);
-    //     $this->__set('dbPassword',$valDBPassword);
-    //     $this->__set('dbURL',$valDBURL);
-    //     $this->__set('dbName',$valDBName);
-    //    // echo $this->dbType.':host='.$this->dbURL.';dbname='.$this->dbName.', '.$this->dbUser.', '.$this->dbPassword;
-    //     $this->dbConnection = new PDO("$this->dbType:host=$this->dbURL;dbname=$this->dbName", $this->dbUser, $this->dbPassword);
-    // }
-
 
     /*Fonction dbConnect()
     *Argument : Aucun
