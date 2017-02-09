@@ -7,6 +7,8 @@ $s->start();
 //Création des variables pour afficher les données correctement.
 $form_Auth = new FormAuth();
 $form_up = new FormUpload();
+$query = "SELECT * FROM datas WHERE auteur_id = '".$s->get('login')."' ORDER BY date DESC LIMIT 5";
+$form_Resul = new FormResultat($query);
 //redirection vers la page d'index si on n'est pas connecté
 $a = Authentification::getInstance();
 if(!$a->isAuth()){
@@ -28,12 +30,16 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
-echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
+echo '<h1>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</h1>'."\n";
 echo $form_Auth;
 echo '</header>'."\n";
 
 echo '<div class = "form">'."\n";
 echo $form_up;
+echo '</div>'."\n";
+
+echo '<div>'."\n";
+echo $form_Resul;
 echo '</div>'."\n";
 
 echo <<< EOF
