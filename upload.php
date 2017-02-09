@@ -30,12 +30,13 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
-echo '<h1>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</h1>'."\n";
+echo "<h1><a href='index.php'>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</a></h1>"."\n";
 echo $form_Auth;
 echo '</header>'."\n";
 
 echo '<div class = "form">'."\n";
 echo $form_up;
+echo $form_up->getMsg();
 echo '</div>'."\n";
 
 echo '<div>'."\n";
