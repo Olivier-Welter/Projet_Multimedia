@@ -16,7 +16,18 @@ class FormUpload extends BaseForm {
                 $chemin = '';
                 $descr = $_POST['descr'];
                 $file = pathinfo(htmlspecialchars ($_FILES['fic']['name']));
-                switch ($file['extension']){
+                $mime_t = substr($mime, 0, 5);
+                switch ($mime_t){
+                    case ('video'):
+                        $chemin = 'multimedia/video';
+                        break;
+                    case ('image'):
+                        $chemin = "multimedia/img";
+                        break;
+                    case ('audio'):
+                        $chemin = 'multimedia/audio';
+                }
+                /*switch ($file['extension']){
                     case ('webm'):
                         $chemin = 'multimedia/video';
                         break;
@@ -33,7 +44,7 @@ class FormUpload extends BaseForm {
                     case ('ogg'):
                     case ('mp3'):
                         $chemin = 'multimedia/audio';
-                }
+                }*/
                 $new_name = htmlspecialchars ($file['basename']);
                 $new_name = preg_replace('~\p{Mn}~u', '', $new_name);
                 $new_name = preg_replace('/([^.a-z0-9]+)/i', '-', $new_name);
@@ -55,7 +66,7 @@ class FormUpload extends BaseForm {
                         echo "Erreur lors de l'envoi en base de données : $e->getMessage()\n";
                     }*/
                 } else {
-                    $this->msg = 'Ereur transfert : '.$_FILES['fic']['error'];
+                    $this->msg = 'Erreur transfert : '.$_FILES['fic']['error'];
                 }
             }
         }

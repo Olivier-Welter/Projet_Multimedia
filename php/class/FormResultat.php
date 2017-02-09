@@ -31,25 +31,20 @@ class FormResultat {
            
             foreach ($value as $k=>$v){
                if ($k=="chemin_relatif"){
-                   switch($value['mime_type']){
-                           case("image/jpeg"):
-                           case("image/svg"):
-                             case ('image/png'):
-                            case ('image/gif'):
-                            $str=$str."<img src='multimedia/img/$v' class='vignette'/>";
+                   $mime = substr($value['mime_type'], 0, 5);
+                   switch($mime){
+                           case("image"):
+                           $str=$str."<img src='multimedia/img/$v' class='vignette'/>";
                            break;
-                           case("audio/ogg"):
-                           case("audio/mp3"): 
-                            $str=$str."<audio controls> 
+                           case("audio"):
+                           $str=$str."<audio controls>
                            <source src='multimedia/audio/$v' type='".$value['mime_type']."' class='vignette'/></audio>";
                            break;
-                           case("video/webm"):
-                           case("video/mp4"):
-                            $str=$str."<video controls> 
+                           case("video"):
+                           $str=$str."<video controls>
                            <source src='multimedia/video/$v' type='".$value['mime_type']."' class='vignette'/></video>";
                            break;
                    }
-        
             }else{
                 $str=$str."$k : $v"."<br/>";    
                }
