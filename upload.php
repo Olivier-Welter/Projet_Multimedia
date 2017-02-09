@@ -36,6 +36,7 @@ echo '</header>'."\n";
 
 echo '<div class = "form">'."\n";
 echo $form_up;
+echo $form_up->getMsg();
 echo '</div>'."\n";
 
 echo '<div>'."\n";

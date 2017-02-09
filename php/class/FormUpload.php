@@ -1,6 +1,8 @@
 <?php
 class FormUpload extends BaseForm {
 
+    private $msg = '';
+
     public function __construct(){
         $this->formAttr = ['action'=>'#', 'method'=>'post', 'name'=>'upload', 'enctype'=>"multipart/form-data"];
         $this->addElem('input', ['type' => 'file', 'name' => 'fic'], 'Fichier : ');
@@ -47,13 +49,13 @@ class FormUpload extends BaseForm {
                         $query = "INSERT INTO datas (chemin_relatif, mime_type, description, auteur_id, date) VALUES ('$new_name', '$mime', '$descr','$auteur', '".date("Y-m-d H:i:s")."')";
                         //echo $query;
                         if($res = ConnectDB::dbCRUD($query)){
-                            echo "<p>Le fichier $new_name a bien été envoyé</p>\n";
+                            $this->msg = "<p>Le fichier $new_name a bien été envoyé</p>\n";
                         }
                     /*}catch (Exception $e){
                         echo "Erreur lors de l'envoi en base de données : $e->getMessage()\n";
                     }*/
                 } else {
-                    echo 'Ereur transfert : '.$_FILES['fic']['error'];
+                    $this->msg = 'Ereur transfert : '.$_FILES['fic']['error'];
                 }
             }
         }
@@ -65,5 +67,9 @@ class FormUpload extends BaseForm {
         //vérifier caractères nom du fichier
 
         return true;
+    }
+
+    public function getMsg(){
+        return $this->msg;
     }
 }
