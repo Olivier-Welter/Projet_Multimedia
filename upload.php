@@ -6,9 +6,8 @@ $s->setMaxAge(10000);
 $s->start();
 
 //Création des variables pour afficher les données correctement.
+$form_Auth = new FormAuth();
 $form_up = new FormUpload();
-
-$s->set('login','toto');//juste pour le test, à virer quand il y aura la connexion
 
 //Affichage des champs HTML
 echo <<< EOT
@@ -24,7 +23,8 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
-
+echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
+echo $form_Auth;
 echo '</header>'."\n";
 
 echo '<div class = "form">'."\n";
