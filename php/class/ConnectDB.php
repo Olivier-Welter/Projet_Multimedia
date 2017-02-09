@@ -142,7 +142,7 @@ class ConnectDB
     *Retourne le résultat de la fonction exec() cette méhode permet de gérer l'exception que peut générer exec().
     *
     */
-    public function dbCRUD($query)
+    public function dbsCRUD($query)
     {
         try
         {
@@ -165,6 +165,7 @@ class ConnectDB
         catch(PDOException $pdoe)
         {
             echo '<p class=error>Erreur de connexion à la base de données</p>';
+            echo '<p class=error>Vérifiez les informations de connexion à la base de données</p>';
         }
 
         try
@@ -182,7 +183,35 @@ class ConnectDB
         }
         catch(PDOException $pdoe)
         {
+            echo '<p class="error">'.$query.'</p>';
             echo '<p class=error>ConnectDB : Erreur lors de la requête dans la base de données.</p>';
+        }
+    }
+
+    
+    //===================================
+    public static function dbCRUD($query)
+    {
+        try
+        {
+            $dbc = new PDO(self::DBTYPE.":host=".self::DBURL.";dbname=".self::DBNAME, self::DBUSER, self::DBPWD);
+            $dbc->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        }
+        catch(PDOException $pdoe)
+        {
+            echo '<p class=error>Erreur de connexion à la base de données</p>';
+            echo '<p class=error>Vérifiez les informations de connexion à la base de données</p>';
+        }
+
+        try
+        {
+            $res = $this->dbConnection->exec($query);
+            return $res;
+        }
+        catch(PDOException $pdoe)
+        {
+           echo '<p class="error">'.$query.'</p>';
+           echo '<p class="error">Erreur de requete</p>';
         }
     }
 }
