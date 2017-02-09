@@ -3,10 +3,16 @@
 require_once('php/autoload.php');
 $s = Session::getInstance();
 $s->setMaxAge(10000); 
-$s->start();
+if ($s->start()) { 
+ echo "<h3>session_id : ".session_id().'</h3>';
 
+} 
+else { 
+    echo("<p>Session terminée.</p>\n"); 
+    }
 
 $form_Auth = new FormAuth();
+<<<<<<< HEAD
 $form_Rech = new FormRecherche();
 $form_Resul = new FormResultat($form_Rech->search());
 
@@ -18,6 +24,12 @@ $form_Resul = new FormResultat($form_Rech->search());
 
 
 
+=======
+
+$form_Rech = new FormRecherche();
+$form_Resul = new FormResultat($form_Rech->search());
+
+>>>>>>> 983585cad1fb3776c9a1810336701a455d3cea73
 //============================Code d'affichage de la page'
 echo <<< EOT
 <!DOCTYPE html>
