@@ -26,18 +26,20 @@ echo <<< EOT
 
 EOT;
 echo '<header>'."\n";
-echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
+echo '<h1>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</h1>'."\n";
 if($a->isAuth()){
 	echo "<a href='upload.php'>Uploader un fichier</a>";
 }
+echo '<div class="Auth">';
 echo $form_Auth;
+echo '</div>';
 echo '</header>'."\n";
 
-echo '<div>'."\n";
+echo '<div class="Rech">'."\n";
 echo $form_Rech;
 echo '</div>'."\n";
 
-echo '<div>'."\n";
+echo '<div class="Resul">'."\n";
 echo $form_Resul;
 echo '</div>'."\n";
 
