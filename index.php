@@ -4,7 +4,7 @@ require_once('php/autoload.php');
 $s = Session::getInstance();
 $s->setMaxAge(10000); 
 $s->start();
-echo "<h3>session_id : ".session_id().'</h3>';
+//echo "<h3>session_id : ".session_id().'</h3>';
 
 
 $form_Auth = new FormAuth();

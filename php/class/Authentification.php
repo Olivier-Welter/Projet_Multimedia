@@ -38,7 +38,8 @@ class Authentification
         if(!self::$inst_auth)
         {
             self::$inst_auth = new self();
-            return self::$inst_auth; 
+
         }
+        return self::$inst_auth;
     }
 }
