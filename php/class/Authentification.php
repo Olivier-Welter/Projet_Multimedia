@@ -9,18 +9,18 @@ class Authentification
     //constructeur
     private function __construct()
     {
-        $inst_session = Session::getInstance();
+        $this->inst_session = Session::getInstance();
 
     }
 
     //methode
     public function isAuth()
     {
-        if(!isset($inst_session))
+        if(!isset($this->inst_session))
         {
             return false;
-        } 
-        return self::$inst_session->get('status');
+        }
+        return $this->inst_session->get('status');
     }
 
     public function checkUser($id,$mdp)
