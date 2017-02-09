@@ -23,7 +23,11 @@ body {
 
 header {
     background-color: #E96C00;
+    background: linear-gradient(#E96C00, #FFFFFF 50%,  #E96C00);
     padding: 1em;
+    border-top-right-radius: 60% 45%;
+    border-bottom-right-radius: 60%  45%;
+    
 }
 
 h1 {
