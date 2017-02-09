@@ -4,6 +4,7 @@ require_once('php/autoload.php');
 $s = Session::getInstance();
 $s->setMaxAge(10000); 
 $s->start();
+$a = Authentification::getInstance();
 //echo "<h3>session_id : ".session_id().'</h3>';
 
 
@@ -26,6 +27,9 @@ echo <<< EOT
 EOT;
 echo '<header>'."\n";
 echo '<p>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</p>'."\n";
+if($a->isAuth()){
+	echo "<a href='upload.php'>Uploader un fichier</a>";
+}
 echo $form_Auth;
 echo '</header>'."\n";
 
