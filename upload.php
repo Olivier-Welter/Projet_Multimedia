@@ -24,8 +24,8 @@ echo <<< EOT
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Charger - Bibliothèque multimédia</title>
-		<link rel="stylesheet" href="./css/default.css" title = "default">
-        <link rel="alternate stylesheet" href="./css/test_claire.css" title="test">
+		<link rel="alternate stylesheet" href="./css/default.css" title = "default">
+        <link rel="stylesheet" href="./css/test_claire.css" title="test">
 	</head>
 	<body>
 
@@ -35,12 +35,12 @@ echo "<h1><a href='index.php'>PROJET PHP Objet - Bibliothèque Multim&eacute;dia
 echo $form_Auth;
 echo '</header>'."\n";
 
-echo '<div class = "form">'."\n";
+echo '<div class = "Rech form">'."\n";
 echo $form_up;
 echo $form_up->getMsg();
 echo '</div>'."\n";
 
-echo '<div>'."\n";
+echo '<div class = "Resul">'."\n";
 echo $form_Resul;
 echo '</div>'."\n";
 

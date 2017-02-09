@@ -20,14 +20,14 @@ echo <<< EOT
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Bibliothèque multim&eacute;dia</title>
-		<link rel="stylesheet" href="./css/default.css" title = "default">
-        <link rel="alternate stylesheet" href="./css/test_claire.css" title="test">
+		<link rel="alternate stylesheet" href="./css/default.css" title = "default">
+        <link rel="stylesheet" href="./css/test_claire.css" title="test">
 	</head>
 	<body>
 
 EOT;
 echo '<header>'."\n";
-echo '<h1>PROJET PHP Objet - Bibliothèque Multim&eacute;dia</h1>'."\n";
+echo '<h1><a href="index.php">PROJET PHP Objet - Bibliothèque Multim&eacute;dia</a></h1>'."\n";
 if($a->isAuth()){
 	echo "<a href='upload.php'>Uploader un fichier</a>";
 }
@@ -36,7 +36,7 @@ echo $form_Auth;
 echo '</div>';
 echo '</header>'."\n";
 
-echo '<div class="Rech">'."\n";
+echo '<div class="Rech form">'."\n";
 echo $form_Rech;
 echo '</div>'."\n";
 
