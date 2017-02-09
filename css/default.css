@@ -16,6 +16,11 @@
 .color-secondary-2-3 { color: #FF652C }
 .color-secondary-2-4 { color: #FF946D }*/
 
+html
+{
+    font-size: 62,5%;
+}
+
 body {
     background-color: #190E00;
     color: lightgray;
@@ -24,7 +29,7 @@ body {
 header {
     background-color: #E96C00;
     background: linear-gradient(#E96C00, #FFFFFF 50%,  #E96C00);
-    padding: 1em;
+    padding: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;   
@@ -46,6 +51,7 @@ header {
 
 h1 {
     color: #190E00;
+    font-size: 2rem;
 }
 
 h2 {
@@ -94,4 +100,52 @@ input {
     padding-bottom: 2%;
     border-radius: 10px;
     border: 1px solid lightgray;
+}
+
+@media screen and (max-width: 380px){
+    header h1{
+        font-size: 1.5rem;
+
+    }
+
+    .Rech
+    {
+        width: 70%;
+        background-color: #FFC26D;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 2%;
+        padding-bottom: 5%;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+    }
+
+    .Rech input{
+        width: auto;
+    }
+
+    .Rech [type=text]{
+        width: 6rem;
+    }
+
+
+    .Resul
+    {
+        width: 70%;
+        background-color: #FFC26D;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+    }
+
+
 }
