@@ -12,15 +12,7 @@ class FormResultat {
     la description et l'élément recherché 
     **/
     function __construct ($query){
-       // $this->query=$query;
-         $dbc = new ConnectDB(
-                            'mysql',
-                            'maemoon_com',
-                            'localhost',
-                            'root','');
-    
-         $this->result=$dbc->dbQuery($query);
-        
+         $this->result=ConnectDB::dbQRY($query);
     }
     
     /*function afficherPremFois(){ // affichage des derniers rajouts quand l'utilisateur est là pour la première fois
