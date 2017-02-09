@@ -93,7 +93,7 @@ class ConnectDB
     */
     public static function dbCRUD($query)
     {
-        $dbc = $this->dbConnect();
+        $dbc = self::dbConnect();
         try
         {
             $res = $dbc->exec($query);
