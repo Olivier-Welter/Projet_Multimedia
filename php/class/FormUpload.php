@@ -33,6 +33,8 @@ class FormUpload extends BaseForm {
                         $chemin = 'multimedia/audio';
                 }
                 $new_name = htmlspecialchars ($file['basename']);
+                $new_name = preg_replace('~\p{Mn}~u', '', $new_name);
+                $new_name = preg_replace('/([^.a-z0-9]+)/i', '-', $new_name);
                 $new_location = $chemin.'/'.$new_name;
                 //echo $new_location."<br>\n";
                 if (move_uploaded_file(htmlspecialchars ($_FILES['fic']['tmp_name']),$new_location)){
