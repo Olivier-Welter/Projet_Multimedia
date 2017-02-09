@@ -11,6 +11,29 @@ $form_Auth = new FormAuth();
 $form_Rech = new FormRecherche();
 $form_Resul = new FormResultat($form_Rech->search());
 
+
+
+
+$dbc = new ConnectDB(
+'mysql',
+'maemoon_com',
+'localhost',
+'root',
+'');
+
+$resultSet = $dbc->dbQuery('SELECT * FROM users where login=\''.$_POST['login'].'\' and passwd = \''.$_POST['passwd'].'\'');
+ if(count($resultSet)==1){
+$s->set('login',$_POST['login']);
+$s->set('status',1);
+}
+else{
+$s->set('login','');
+$s->set('status',0);	
+}
+print_r($resultSet);
+var_dump($_SESSION);
+
+
 //============================Code d'affichage de la page'
 echo <<< EOT
 <!DOCTYPE html>
