@@ -4,10 +4,15 @@ require_once('php/autoload.php');
 $s = Session::getInstance('session_non_auth');
 $s->setMaxAge(10000); 
 $s->start();
-
 //Création des variables pour afficher les données correctement.
 $form_Auth = new FormAuth();
 $form_up = new FormUpload();
+//redirection vers la page d'index si on n'est pas connecté
+$a = Authentification::getInstance();
+if(!$a->isAuth()){
+	header("Location: index.php",TRUE,302);
+    exit;
+}
 
 //Affichage des champs HTML
 echo <<< EOT
