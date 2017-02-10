@@ -1,0 +1,404 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<title>Projet_Mutimedia- Table of Contents</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/silver-theme/jquery-ui-1.8.12.custom.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/dynatree/chm/ui.dynatree.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/toc.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#tabs .ui-widget-header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.dynatree.min.js"></script>
+	<script type="text/javascript" src="js/hndjsse.js"></script>
+	<script type="text/javascript">
+	
+		window.bSearchDataLoaded = false;
+		var sHelpIdToActivate = '';
+	
+		$(document).ready(function()
+		{
+			var sAnchorName = '';
+			try { sAnchorName = top.location.href.substring(top.location.href.lastIndexOf("#") + 1, top.location.href.length); }
+			catch(err) { sAnchorName = ''; }
+			var nSelectedTab = 0;
+			if (sAnchorName == '_index') nSelectedTab = 1
+			else if (sAnchorName == '_search') nSelectedTab = 2;			
+			$("#tabs").tabs({
+				selected: nSelectedTab,
+				select: function(event, ui) { HideKwPopup(); }
+			});
+			
+			// Toc
+			if ($("#tab-toc").length) {
+				$("#tab-toc").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onActivate: function(node){
+						if ($("#tab-keywords").length && $("#tab-keywords").dynatree && $("#tab-keywords").dynatree("getTree") && $("#tab-keywords").dynatree("getTree").activateKey)
+							$("#tab-keywords").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+				// Expand all nodes if required
+				$("#tab-toc").dynatree("getRoot").visit(function(node){
+						node.expand(true);
+					});
+				// Select the active help id
+				if (sHelpIdToActivate != '') $("#tab-toc").dynatree("getTree").activateKey(sHelpIdToActivate);
+			}
+			
+			// Keywords
+			
+			if ($("#tab-keywords").length) {
+				$("#tab-keywords").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onClick: function(node, event){
+						HideKwPopup();
+						if (node.data && node.data.click)
+						{
+							var aRefList = null;
+							eval('aRefList=' + node.data.click);
+							if (ShowKwPopup(node.li, aRefList))
+							{
+								if ($("#tab-toc") && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").activateKey)
+									$("#tab-toc").dynatree("getTree").activateKey(null);
+								if(node.data.href && node.data.href != '#'){
+									window.open(node.data.href, node.data.target);
+								}
+							}
+						}
+					}
+				});
+				// Expand all nodes if required
+				$("#tab-keywords").dynatree("getRoot").visit(function(node){
+						node.expand(true);
+					});
+				}
+			
+			// Load search data
+			(function() {
+				var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+				se.src = 'js/hndsd.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+			})();
+		});
+		
+		$('body').click(function() {
+			HideKwPopup();
+		});
+		
+		function SelectTocItem(sHelpId)
+		{
+			if ($("#tab-toc").length && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").getNodeByKey) {
+				$("#tab-toc").dynatree("getTree").getNodeByKey(sHelpId).activateSilently();
+			}
+			else {
+				sHelpIdToActivate = sHelpId;
+			}
+		}
+		
+		function HideKwPopup()
+		{
+			if($("#popupMenu")) $("#popupMenu").remove();
+		}
+		
+		function ShowKwPopup(oSender, aLinks)
+		{
+			HideKwPopup();
+			if (!aLinks || !aLinks.length || aLinks.length == 0) return false
+			else if (aLinks.length == 1) return true
+			else
+			{
+				var oParentDiv = document.createElement("DIV");
+				oParentDiv.id = "popupMenu";
+				var oLink = null;
+				// Close button
+				oLink = document.createElement("SPAN");
+				oLink.className = "close-button";
+				oLink.innerHTML = "X";
+				oLink.href = "#";
+				oLink.onclick = HideKwPopup;
+				oParentDiv.appendChild(oLink);
+				// Items
+				for (var nCnt=0; nCnt<aLinks.length; nCnt++)
+				{
+					oLink = document.createElement("A");
+					oLink.innerHTML = aLinks[nCnt][0];
+					oLink.href = aLinks[nCnt][1];
+					oLink.target = "FrameMain";
+					oLink.onclick = HideKwPopup;
+					oParentDiv.appendChild(oLink);
+				}
+				document.body.appendChild(oParentDiv);
+				var pos = $(oSender).offset(); 
+				var height = $(oSender).height();
+				$(oParentDiv).css({
+					"left": (pos.left+20) + "px",
+					"top": (pos.top + height + 5) + "px"
+				});
+				$(oParentDiv).show();
+				return false;
+			}
+		}
+		
+		function PerformSearch()
+		{
+			if (!window.bSearchDataLoaded) {
+				$("#search_results").html("Search engine data hasn't been fully loaded yet or an error occurred while loading it. This usually happens when documentation is browsed locally.");
+				return;
+			}
+			sValue = $("#search_value").val();
+			$("#search_results").html('Searching...');
+			var oSearchEngine = new HndJsSe;
+			oSearchEngine.ParseInput(sValue);			
+			oSearchEngine.PerformSearch();
+			if (!oSearchEngine.aResults || !oSearchEngine.aResults.length)
+			{
+				$("#search_results").html('No results found.');
+			}
+			else
+			{
+				$("#search_results").html('<div id="search_results_content"></div>');
+				var oUl = $("#search_results_content").append("<ul id='lr'></ul>").find("ul");
+				for (var nCnt = 0; nCnt < oSearchEngine.aResults.length; nCnt++)
+				{
+					if (oSearchEngine.aResults[nCnt][0] < aTl.length)
+					{
+						oUl.append("<li><a href='" + aTl[oSearchEngine.aResults[nCnt][0]][0] + "?search=" + escape(sValue) + "' target='FrameMain'>" + unescape(aTl[oSearchEngine.aResults[nCnt][0]][1]) + "</a></li>");
+					}
+				}
+				// Tree
+				$("#search_results_content").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onActivate: function(node){
+						if ($("#search_results_content") && $("#search_results_content").dynatree && $("#search_results_content").dynatree("getTree") && $("#search_results_content").dynatree("getTree").activateKey)
+							$("#search_results_content").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tab-toc">Contents</a></li>
+			<li><a href="#tab-keywords">Index</a></li>
+			<li><a href="#tab-search">Search</a></li>
+			</ul>
+		<div id="tab-toc">
+			<ul id="toc" class="">
+
+				<li class="" id="Cahierdescharges" data="icon: '1.png'">
+							<a
+							href="Cahierdescharges.html"
+							target="FrameMain">
+								Cahier des charges</a>
+
+				</li><li class="folder" id="Descriptiftechnique" data="">
+							<a
+							href="Descriptiftechnique.html"
+							target="FrameMain">
+								Descriptif technique</a>
+
+				<ul><li class="folder" id="Outils" data="">
+							<a
+							href="Outils.html"
+							target="FrameMain">
+								Outils</a>
+
+				<ul><li class="" id="Travailcollaboratif" data="">
+							<a
+							href="Travailcollaboratif.html"
+							target="FrameMain">
+								Travail collaboratif</a>
+
+				</li><li class="" id="IDE" data="">
+							<a
+							href="IDE.html"
+							target="FrameMain">
+								IDE</a>
+
+				</li></ul></li><li class="" id="Basededonnees" data="">
+							<a
+							href="Basededonnees.html"
+							target="FrameMain">
+								Base de donn&eacute;es</a>
+
+				</li></ul></li><li class="" id="Langages" data="">
+							<a
+							href="Langages.html"
+							target="FrameMain">
+								Langages</a>
+
+				</li><li class="folder" id="Structuredestables" data="">
+							<a
+							href="Structuredestables.html"
+							target="FrameMain">
+								Structure des tables</a>
+
+				<ul><li class="" id="datas" data="">
+							<a
+							href="datas.html"
+							target="FrameMain">
+								datas</a>
+
+				</li><li class="" id="users" data="">
+							<a
+							href="users.html"
+							target="FrameMain">
+								users</a>
+
+				</li></ul></li><li class="" id="Chartegraphique" data="icon: '1.png'">
+							<a
+							href="Chartegraphique.html"
+							target="FrameMain">
+								Charte graphique</a>
+
+				</li><li class="folder" id="Structuredusite" data="">
+							<a
+							href="Structuredusite.html"
+							target="FrameMain">
+								Structure du site</a>
+
+				<ul><li class="" id="Pagedacceuilchampsdeconnexion" data="">
+							<a
+							href="Pagedacceuilchampsdeconnexion.html"
+							target="FrameMain">
+								Page d'acceuil  + champs de connexion</a>
+
+				</li><li class="" id="Pagederesultatetderecherche" data="">
+							<a
+							href="Pagederesultatetderecherche.html"
+							target="FrameMain">
+								Page de r&eacute;sultat et de recherche</a>
+
+				</li><li class="" id="Pageupload" data="">
+							<a
+							href="Pageupload.html"
+							target="FrameMain">
+								Page upload</a>
+
+				</li><li class="" id="Pagedunmembreconnecte" data="">
+							<a
+							href="Pagedunmembreconnecte.html"
+							target="FrameMain">
+								Page d'un membre connect&eacute;</a>
+
+				</li></ul></li><li class="folder" id="Conception" data="">
+							<a
+							href="Conception.html"
+							target="FrameMain">
+								Conception</a>
+
+				<ul><li class="" id="Authentification" data="">
+							<a
+							href="Authentification.html"
+							target="FrameMain">
+								Authentification</a>
+
+				</li><li class="" id="BaseForm" data="">
+							<a
+							href="BaseForm.html"
+							target="FrameMain">
+								BaseForm</a>
+
+				</li><li class="" id="ConnectDB" data="">
+							<a
+							href="ConnectDB.html"
+							target="FrameMain">
+								ConnectDB</a>
+
+				</li><li class="" id="FormAuth" data="">
+							<a
+							href="FormAuth.html"
+							target="FrameMain">
+								FormAuth</a>
+
+				</li><li class="" id="FormRecherche" data="">
+							<a
+							href="FormRecherche.html"
+							target="FrameMain">
+								FormRecherche</a>
+
+				</li><li class="" id="FormResultat" data="">
+							<a
+							href="FormResultat.html"
+							target="FrameMain">
+								FormResultat</a>
+
+				</li><li class="" id="FormUpload" data="">
+							<a
+							href="FormUpload.html"
+							target="FrameMain">
+								FormUpload</a>
+
+				</li><li class="" id="HTMLBalises" data="">
+							<a
+							href="HTMLBalises.html"
+							target="FrameMain">
+								HTMLBalises</a>
+
+				</li><li class="" id="LogFile" data="">
+							<a
+							href="LogFile.html"
+							target="FrameMain">
+								LogFile</a>
+
+				</li><li class="" id="Session" data="">
+							<a
+							href="Session.html"
+							target="FrameMain">
+								Session</a>
+
+				</li></ul></li></ul>
+		</div>
+		
+		<div id="tab-keywords">
+			<ul id="keywords">
+
+				</ul>
+		</div>
+		
+		<div id="tab-search">
+			<form onsubmit="PerformSearch(); return false;">
+				<label for="search_value">Search:</label>
+				<input id="search_value" name="search_value"></input>
+				<input type="submit" value="Search"/>
+			</form>
+			<div id="search_results"></div>
+		</div>
+		
+		</div>
+    
+</body>
+
+</html>
+

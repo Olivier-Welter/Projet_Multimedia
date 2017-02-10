@@ -1,0 +1,157 @@
+﻿<html>
+	
+<head>
+	<title>Cahier des charges</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "Projet_Mutimedia.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Cahierdescharges");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Cahier des charges</h1>
+				
+				</div>
+			<div id="topic_header_nav">
+				<a href="Descriptiftechnique.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps4"><span class="rvts0"><span class="rvts11">CAHIER DES CHARGES</span></span></h1>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Depuis l'avènement du HTML5 utiliser des fichiers multimédia est devenu très simple coté client. C'est pourquoi nous allons mettre en place une application destinée à héberger ce type de contenu.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Ainsi nous voulons développer un système tel que celui-ci permette :</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;de visualiser des vidéos,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;de visualiser des photos,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;d'écouter des sons.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Contraintes d'utilisation :</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;pour fonctionner il faudra disposer d'un navigateur HTML5,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;les vidéos devront être au format WebM,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;les images devront être au format gif, Jpeg, png ou SVG,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;les sons devront être au format OGG.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Utilisation de l'application :</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;Il existe deux types d'utilisation :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;l'utilisation non authentifié permettant de visualiser n'importe quel contenu présent. La recherche de celui-ci se fait par un formulaire de saisie contenant les champs suivants :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;autor pour rechercher un élément déposé par un utilisateur particulier, et alimenté à partir du contenu de la base de données,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;type pour rechercher un élément de type particulier : vidéo, son ou image</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;descr pour rechercher un élément dont la description contient un mot saisi ici (limité à 50 caractères).</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Dans le cas ou la saisie présente plusieurs éléments un système de liens affichant une description sommaire permettra de choisir l'un des éléments.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Suite à la saisie d'un élément unique celui-ci sera visualisé en utilisant la puissance du HTML5, c'est à dire par l'un des éléments video, audio ou img.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;L'utilisation authentifiée permettra en plus de la consultation précédemment décrite, de déposer un contenu. Dans ce cas :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;un premier formulaire d'authentification demandant identifiant et mot de passe sera rempli,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;en cas de validité l'identification sera maintenue en session,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alors un formulaire de dépôt de contenu sera accessible, celui-ci présentant les champs suivants :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;fic de type file permettant d'envoyer un fichier (upload HTTP),</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;descr de type text permettant d'indiquer la description du fichier.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Structuration de la base de données :</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;les éléments multimédia seront archivés sur le système de fichiers, dans une répertoire application/multimedia segmenté en 3 sous répertoires :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;videos pour les vidéos,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;audio pour les sons,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;images pour les images.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;Ils seront indexés à partir d'une base de données SQL dans laquelle seront présentes les tables suivantes :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;la table datas destinée aux informations sur les contenus multimédia,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;la table users destinée aux informations sur les utilisateurs.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;Description de la table datas.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;Dans cette table seront renseignés les champs suivants :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;chemin_relatif indiquant le nom relativement à la racine ou se situe le média en fonction de son type. Ainsi un fichier de type image ayant pour valeur chemin_relatif=ma_photo.jpg sera localisé dans application/multimedia/image/ma_photo.jpg</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;mime_type contenant le type mime du fichier :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;image/jpeg pour une image de type jpeg,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;image/png pour une image de type png,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;video/webm pour une vidéo de type webm...</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;pour plus d'infos suivre ce lien</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;description contenant la description textuelle du contenu,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;auteur_id contenant l'identifiant de la personne ayant déposé le contenu,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;date contenant la date de dépôt de ce contenu,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;Description de la table users.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;Dans cette table seront renseignés les champs suivants :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;id indiquant l'identifiant de l'utilisateur,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;nom indiquant le nom de l'utilisateur,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;passwd indiquant le mot de passe de l'utilisateur haché par du md5 "avec grain de sel",</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Structuration en objet :</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Afin de permettre une réutilisation du code et un découpage du travail le code sera structuré en classes de la façon suivante :</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;les sessions seront gérées par un singleton Session assurant ce rôle comme vu dans les exercices précédents,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;l'authentification sera également gérée par un singleton nommé Authentification exploitant la classe Session et permettant :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;de vérifier si l'utilisateur est authentifié par la methode isAuth() retournant true en cas de succès,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;de vérifier si un identifiant et un mot de passe sont bien valide par la methode checkUser(user, pass) retournant true en cas de succès et validant l'authentification en session,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;de permettre la déconnexion par la méthode disconnect() retournant true en cas de succès, c'est à dire si précédemment connecté.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;les formulaires seront produits par des classes dédiées permettant :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;de valider les valeurs saisies par des contraintes internes à partir des tableaux $_GET et/ou $_POST par la méthode check() et retournant true en cas de succès,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;de produire le code HTML à partir des tableaux $_GET et/ou $_POST par la methode __toString() tout en présentant les valeurs erronées en cas de saisie incorrecte.</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;la présentation des données sera réalisée par des classes dédiées permettant :</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;de visualiser les champs extraits de la base de données,</span></p>
+<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;en fonction du contenu le HTML produit s'adaptera au type de média.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">La visualisation de la page devra s'adapter au système d'affichage en n'utilisant que les CSS et les directives de type "media query" </span></p>
+<p></p>
+<p class="rvps5"><span class="rvts12">Créé avec HelpNDoc Personal Edition: </span><a class="rvts13" href="http://www.helpndoc.com/fr">Générateur d'aides Web gratuit</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 10/02/2017 by Olivier,Claire,Fabrice,Alexis. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+
