@@ -3,8 +3,15 @@ window.onload = (function () {
 
     for (var i = 0; i < res.length; i++) {
         res[i].addEventListener('click', function (e) {
+            console.log(e);
+            var elem;
+            if (e.target.className == 'vignette') {
+                elem = e.target.parentElement
+            } else {
+                elem = e.target
+            }
             resetRes()
-            e.target.className = 'visionne';
+            elem.className = 'visionne';
         })
     }
 
