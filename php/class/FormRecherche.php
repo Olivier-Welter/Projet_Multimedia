@@ -37,7 +37,7 @@ class FormRecherche extends BaseForm {
         $query = "SELECT * FROM datas ORDER BY date DESC LIMIT 5";
         //si on a récupéré des valeurs on les utilise pour la recherche
         if(isset($this->champsAttr[0]['value'])){
-            if ($this->check){
+            if ($this->check()){
                 $query = "SELECT * from datas";
                 //recherche de l'auteur et de la description
                 $cond1 = '';
@@ -51,7 +51,7 @@ class FormRecherche extends BaseForm {
                         $cond1.=" WHERE description LIKE '%".$this->champsAttr[1]['value']."%'";
                     }
                 }
-                //recheche en fonction du type de fichiers
+                //recherche en fonction du type de fichiers
                 $cond2 = '';
                 if (isset($this->champsAttr[2]['checked'])){
                     $cond2.="(mime_type LIKE 'image/%'";
