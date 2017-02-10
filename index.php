@@ -23,6 +23,8 @@ echo <<< EOT
 		<link rel="alternate stylesheet" href="./css/default.css" title = "default">
 		<link rel="alternate stylesheet" href="./css/test_claire_v2.css" title = "test2">
         <link rel="stylesheet" href="./css/test_claire.css" title="test">
+		<script type="text/javascript" src="js/test.js"></script>
+
 	</head>
 	<body>
 

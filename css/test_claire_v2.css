@@ -135,7 +135,8 @@ textarea {
     margin-right: 10px;
 }
 
-.resume {
+.resume,
+.visionne {
     display: block;
     min-height: 95px;
     width: 90%;
@@ -151,6 +152,13 @@ textarea {
 
 .resume:nth-child(even) {
     border-right: 3px solid #E98800;
+}
+
+.visionne .vignette {
+    width: 100%;
+    float: none;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 @media screen and (max-width: 950px) {

@@ -136,7 +136,8 @@ textarea {
     margin-right: 10px;
 }
 
-.resume {
+.resume,
+.visionne {
     display: block;
     min-height: 95px;
     width: 90%;
@@ -146,6 +147,13 @@ textarea {
     border: 1px solid #E98800;
     border-radius: 5px;
     color: #813C00;
+}
+
+.visionne .vignette {
+    width: 100%;
+    float: none;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 @media screen and (max-width: 950px) {
@@ -158,17 +166,13 @@ textarea {
         font-size: 1.5rem;
     }
     .form,
-    .Rech,
     .Resul {
         width: 80%;
         margin: 2% auto;
         padding: 1%;
         border-radius: 5px;
     }
-    .Rech input {
-        width: auto;
-    }
-    .Rech [type=text] {
+    .form [type=text] {
         width: 6rem;
     }
 }
@@ -215,6 +219,12 @@ textarea {
     input {
         width: auto;
         height: 1.5rem;
+    }
+    .form input[type=text],
+    .form input[type=file],
+    .form textarea {
+        width: 10rem;
+        display: block;
     }
     input[type=checkbox] {
         width: 1.5rem;
