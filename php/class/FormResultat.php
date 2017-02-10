@@ -27,7 +27,29 @@ class FormResultat {
 
     function __toString(){
         $str = ""; 
-        if(count($this->result)>0){
+        if(count($this->result)==1){
+            $str .= "<span class='visionne'>";
+            $mime = substr($this->result[0]['mime_type'], 0, 5);
+            $chemin = 'multimedia/'.$mime.'/'.$this->result[0]['chemin_relatif'];
+            $descr = $this->result[0]['description'];
+            switch($mime){
+                case("image"):
+                    $str=$str."<img src='$chemin' class='vignette' alt='$descr'/>\n";
+                    break;
+                case("audio"):
+                    $str=$str."<audio controls class='vignette'>
+                    <source src='$chemin' type='".$this->result[0]['mime_type']."'/></audio>\n";
+                    break;
+                case("video"):
+                    $str=$str."<video controls class='vignette'>
+                    <source src='$chemin' type='".$this->result[0]['mime_type']."'/></video>\n";
+                    break;
+            }
+            $str.="Auteur : ".$this->result[0]['auteur_id']."<br/>\n";
+            $str.="Description : ".$this->result[0]['description']."<br/>\n";
+            $str.="Date ajout : ".$this->result[0]['date']."<br/>\n";
+            $str.="</span>\n";
+        } elseif(count($this->result)>1){
             foreach ($this->result as $key => $value){
                 $str .= "<span class='resume'>";
                 //if($value['mime_type']=='video/ogg'){ //pour le problème des ogg qui passent en tant que vidéo, voir si on trouve une meilleure solution

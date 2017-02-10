@@ -156,6 +156,10 @@ textarea {
     max-height: 100%;
 }
 
+.invalid {
+    border: 1px solid red;
+}
+
 @media screen and (max-width: 950px) {
     body {
         width: 720px;
@@ -223,7 +227,8 @@ textarea {
     .form input[type=text],
     .form input[type=file],
     .form textarea {
-        width: 10rem;
+        margin: auto;
+        width: 90%;
         display: block;
     }
     input[type=checkbox] {

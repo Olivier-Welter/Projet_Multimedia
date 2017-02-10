@@ -181,6 +181,7 @@ textarea {
         width: auto;
     }
     .Rech [type=text] {
+        display: block;
         width: 6rem;
     }
 }
@@ -224,8 +225,14 @@ textarea {
         border-radius: 5px;
     }
     input {
-        width: auto;
         height: 1.5rem;
+    }
+    .form input[type=text],
+    .form input[type=file],
+    .form textarea {
+        margin: auto;
+        width: 90%;
+        display: block;
     }
     input[type=checkbox] {
         width: 1.5rem;
