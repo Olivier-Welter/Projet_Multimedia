@@ -1,11 +1,11 @@
 <?php
 class FormUpload extends BaseForm {
-
+    const ERRORS = ['OK', 'INI_SIZE', 'FORM_SIZE', 'PARTIAL','NO_FILE', 'NO_TMP_DIR', 'CANT_WRITE', 'EXTENSION'];
     private $msg = '';
 
     public function __construct(){
         $this->formAttr = ['action'=>'#', 'method'=>'post', 'name'=>'upload', 'enctype'=>"multipart/form-data"];
-        $this->addElem('input', ['type' => 'file', 'name' => 'fic'], 'Fichier : ');
+        $this->addElem('input', ['type' => 'file', 'name' => 'fic', 'accept' => "audio/*,video/*,image/*"], 'Fichier : ');
         $this->addElem('input', ['type' => 'hidden', 'name'=>"MAX_FILE_SIZE", 'value'=>"100000000"]);
         $this->addElem('textarea', ['name' => "descr"], 'Description : ');
         $this->addElem('input', ['name' => "send", 'type' => 'submit', 'value'=>'Envoyer']);
@@ -70,17 +70,29 @@ class FormUpload extends BaseForm {
                         echo "Erreur lors de l'envoi en base de données : $e->getMessage()\n";
                     }*/
                 } else {
-                    $this->msg = 'Erreur transfert : '.$_FILES['fic']['error'];
+                    $this->msg = 'Erreur transfert : '.self::ERRORS[$_FILES['fic']['error']];
                 }
             }
         }
     }
 
     public function verif(){
+        //vérifier fichier
+        if($_FILES['fic']['error']!=0){
+            $this->msg = 'Erreur transfert : '.self::ERRORS[$_FILES['fic']['error']];
+            return false;
+        }
+        $mime = substr($_FILES['fic']['type'], 0, 5);
+        if(($mime != 'image')&&($mime != 'audio')&&($mime != 'video')){
+            $this->msg = 'Format de fichier non supporté : '.$_FILES['fic']['type'];
+            return false;
+        }
         //vérifier longueur description
-
-        //vérifier caractères nom du fichier
-
+        if(strlen($_POST['descr'])>200){
+            $this->msg = 'La description ne doit pas dépasser 200 caractères';
+            $this->champsAttr[2]['class'] = 'invalid';
+            return false;
+        }
         return true;
     }
 

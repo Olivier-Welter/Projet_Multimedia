@@ -2,8 +2,8 @@
 class FormRecherche extends BaseForm {
     public function __construct(){
         $this->formAttr = ['action'=>'#', 'method'=>'post', 'name'=>'searchform'];
-        $this->addElem('input', ['name' => "auteur", 'type' => 'text', 'placeholder'=>'auteur'], 'Auteur : ');
-        $this->addElem('input', ['name' => "descr", 'type' => 'text', 'placeholder'=>'description'], 'Description : ');
+        $this->addElem('input', ['name' => "auteur", 'type' => 'text', 'placeholder'=>'auteur', 'maxlength'=>"20"], 'Auteur : ');
+        $this->addElem('input', ['name' => "descr", 'type' => 'text', 'placeholder'=>'description', 'maxlength'=>"50"], 'Description : ');
         $this->addElem('input', ['name' => "type[]", 'type' => 'checkbox', 'value'=>'img'], 'Images');
         $this->addElem('input', ['name' => "type[]", 'type' => 'checkbox', 'value'=>'audio'], 'Audio');
         $this->addElem('input', ['name' => "type[]", 'type' => 'checkbox', 'value'=>'video'], 'Vidéo');
