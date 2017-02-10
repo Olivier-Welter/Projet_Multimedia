@@ -132,7 +132,7 @@ input[type=submit]:active {
 .vignette {
     float: left;
     max-width: 150px;
-    max-height: 100px;
+    max-height: 95px;
     min-height: 80px;
     margin-right: 10px;
 }
@@ -182,9 +182,6 @@ input[type=submit]:active {
         margin: 2% auto;
         padding: 1%;
         border-radius: 5px;
-    }
-    .form input {
-        width: auto;
     }
     .form input[type=text] {
         display: block;
