@@ -30,11 +30,11 @@ class FormResultat {
         if(count($this->result)>0){
             foreach ($this->result as $key => $value){
                 $str .= "<span class='resume'>";
-                if($value['mime_type']=='video/ogg'){ //pour le problème des ogg qui passent en tant que vidéo, voir si on trouve une meilleure solution
-                    $mime = 'audio';
-                }else{
+                //if($value['mime_type']=='video/ogg'){ //pour le problème des ogg qui passent en tant que vidéo, voir si on trouve une meilleure solution
+                //    $mime = 'audio';
+                //}else{
                     $mime = substr($value['mime_type'], 0, 5);
-                }
+                //}
                 $chemin = 'multimedia/'.$mime.'/'.$value['chemin_relatif'];
                 $descr = $value['description'];
                 switch($mime){
