@@ -21,6 +21,7 @@ echo <<< EOT
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Bibliothèque multim&eacute;dia</title>
 		<link rel="alternate stylesheet" href="./css/default.css" title = "default">
+		<link rel="alternate stylesheet" href="./css/test_claire_v2.css" title = "test2">
         <link rel="stylesheet" href="./css/test_claire.css" title="test">
 	</head>
 	<body>
