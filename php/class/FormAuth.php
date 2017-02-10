@@ -1,16 +1,18 @@
 <?php
 class FormAuth extends BaseForm {
+    private $msg;
 
     public function __construct(){
         //connexion
         if(isset($_POST['auth'])){
             $a = Authentification::getInstance();
-            if ($this->verif()){
+            if ($this->check()){
                 $s = Session::getInstance();
                 if($a->checkUser($_POST['login'],$_POST['passwd'])){
                     $s->set('login',$_POST['login']);
                     $s->set('status',1);
                 }else{
+                    $this->msg = 'Login ou mot de passe invalide';
                     $s->set('status',0);
                 }
             }
@@ -32,12 +34,23 @@ class FormAuth extends BaseForm {
             $this->addElem('input', ['name' => "auth", 'type' => 'submit', 'value'=>'Authentification']);
             if(isset($_POST['auth'])){
                 $this->champsAttr[0]['value'] = $_POST['login'];
+                if($_POST['login']==''){
+                    $this->champsAttr[0]['class'] = 'invalid';
+                }
+                $this->champsAttr[1]['class'] = 'invalid';
             }
         }
     }
 
-    public function verif(){
-        $v = (($_POST['login']!='')&&($_POST['passwd']!=''));
-        return $v;
+    public function check(){
+        if(($_POST['login']=='')||($_POST['passwd']=='')){
+            $this->msg = 'Tous les champs doivent être remplis';
+            return false;
+        }
+        return true;
+    }
+
+    public function getMsg(){
+        return $this->msg;
     }
 }

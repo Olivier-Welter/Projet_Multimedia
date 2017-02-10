@@ -7,7 +7,7 @@ abstract class BaseForm {
 
     abstract public function __construct();
 
-    abstract public function verif();
+    abstract public function check();
 
     public function addElem($type, $attr = [], $label = ''){
         $this->champsType[] = $type;
@@ -25,7 +25,6 @@ abstract class BaseForm {
             }else{
                 $str.=' '.$in;
             }
-            $str.=' '.new HTMLBalises('br');
         }
         $form = new HTMLBalises('form', $this->formAttr, $str);
         return "$form";

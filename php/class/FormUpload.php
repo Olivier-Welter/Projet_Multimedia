@@ -11,7 +11,7 @@ class FormUpload extends BaseForm {
         $this->addElem('input', ['name' => "send", 'type' => 'submit', 'value'=>'Envoyer']);
 
         if(isset($_POST['send'])){
-            if ($this->verif()){
+            if ($this->check()){
                 $mime = $_FILES['fic']['type'];
                 $chemin = '';
                 $descr = $_POST['descr'];
@@ -76,7 +76,7 @@ class FormUpload extends BaseForm {
         }
     }
 
-    public function verif(){
+    public function check(){
         //vérifier fichier
         if($_FILES['fic']['error']!=0){
             $this->msg = 'Erreur transfert : '.self::ERRORS[$_FILES['fic']['error']];

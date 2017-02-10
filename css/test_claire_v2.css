@@ -22,9 +22,6 @@ html {
 
 body {
     background-color: #222;
-    color: lightgray;
-    /*width: 80%;
-    max-width: 900px;*/
     width: 900px;
     margin: 1% auto;
     padding: 1%;
@@ -105,6 +102,17 @@ textarea {
     padding-left: 2px;
 }
 
+label span {
+    display: inline-block;
+    width: 6rem;
+}
+
+form label:nth-child(1),
+form label:nth-child(2),
+.form input[type=submit] {
+    display: block;
+}
+
 .form {
     max-width: 400px;
     margin: 1rem auto;
@@ -115,17 +123,11 @@ textarea {
     border: 1px dashed #FF652C;
 }
 
-
-/*.Resul {
-    width: 80%;
-    margin: 1rem auto;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    border-radius: 5px;
-    color: #812300;
-}*/
+input[type=submit]:active {
+    background-color: #FF652C;
+    border: 1px solid #812300;
+    color: #FFC26D;
+}
 
 .vignette {
     float: left;
@@ -161,6 +163,11 @@ textarea {
     max-height: 100%;
 }
 
+.invalid {
+    border: 1px solid red;
+    box-shadow: 0 0 5px red inset;
+}
+
 @media screen and (max-width: 950px) {
     body {
         width: 720px;
@@ -170,17 +177,16 @@ textarea {
         width: 60%;
         font-size: 1.5rem;
     }
-    .form,
-    .Rech {
+    .form {
         width: 80%;
         margin: 2% auto;
         padding: 1%;
         border-radius: 5px;
     }
-    .Rech input {
+    .form input {
         width: auto;
     }
-    .Rech [type=text] {
+    .form input[type=text] {
         display: block;
         width: 6rem;
     }
