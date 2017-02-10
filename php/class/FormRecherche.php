@@ -27,8 +27,6 @@ class FormRecherche extends BaseForm {
         }
     }
 
-    /*public function __toString(){ $str = ''; foreach($this->champsAttr as $key => $val){ $in = new HTMLBalises($this->champsType[$key], $val, 'test'); if($this->champsLabel[$key] !== ''){ $elem = new HTMLBalises('label', [], $this->champsLabel[$key].$in); $str.=' '.$elem; }else{ $str.=' '.$in; } $str.=' '.new HTMLBalises('br'); } $form = new HTMLBalises('form', ['action'=>'#', 'method'=>'post', 'name'=>'searchform'], $str); return "$form"; }*/
-
 
     /*
     Pas de paramètres
@@ -39,7 +37,7 @@ class FormRecherche extends BaseForm {
         $query = "SELECT * FROM datas ORDER BY date DESC LIMIT 5";
         //si on a récupéré des valeurs on les utilise pour la recherche
         if(isset($this->champsAttr[0]['value'])){
-            if ($this->valide){
+            if ($this->check){
                 $query = "SELECT * from datas";
                 //recherche de l'auteur et de la description
                 $cond1 = '';
